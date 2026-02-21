@@ -3,598 +3,410 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIMPLY — daily needs, simply simple</title>
-    <!-- Using Inter, a clean geometric sans-serif -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <title>Whispers in Shadowbrook · supernatural mystery</title>
     <style>
         * {
-            margin: 0;
-            padding: 0;
             box-sizing: border-box;
+            font-family: 'Georgia', 'Times New Roman', serif;
         }
-
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: #FFFFFF;
-            color: #1D1D1F;
-            line-height: 1.5;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* sticky navigation */
-        nav {
-            position: sticky;
-            top: 0;
-            z-index: 10;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px 0;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 16px 24px;
-        }
-
-        .logo {
-            font-weight: 700;
-            font-size: 1.5rem;
-            letter-spacing: -0.02em;
-            color: #1D1D1F;
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 32px;
-            align-items: center;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #1D1D1F;
-            font-weight: 500;
-            font-size: 1rem;
-        }
-
-        .waitlist-btn {
-            background-color: #1D1D1F;
-            color: white !important;
-            padding: 8px 18px;
-            border-radius: 30px;
-            font-weight: 600;
-            transition: background 0.2s;
-        }
-
-        .waitlist-btn:hover {
-            background-color: #3a3a3e;
-        }
-
-        /* sections */
-        section {
-            padding: 100px 0;
-        }
-
-        .hero {
-            padding: 80px 0 100px;
-        }
-
-        .hero-content {
-            text-align: center;
-            max-width: 720px;
-            margin: 0 auto 60px;
-        }
-
-        h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            line-height: 1.1;
-            margin-bottom: 24px;
-        }
-
-        .subhead {
-            font-size: 1.5rem;
-            font-weight: 400;
-            color: #6e6e73;
-            margin-bottom: 40px;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: none;
-            border: 1px solid #1D1D1F;
-            color: #1D1D1F;
-            padding: 12px 30px;
-            border-radius: 40px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.2s;
-        }
-
-        .cta-button:hover {
-            background: #1D1D1F;
-            color: white;
-        }
-
-        /* wireframe image boxes */
-        .image-placeholder {
-            background: #f5f5f7;
-            border-radius: 24px;
+            background: #0b1a1e;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #8e8e93;
-            font-size: 1rem;
-            font-weight: 500;
-            border: 2px dashed #d2d2d6;
-        }
-
-        .hero-image {
-            width: 100%;
-            max-width: 900px;
-            height: 400px;
-            margin: 0 auto;
-            background: #f0f0f4;
-            border-radius: 30px;
-            /* half‑cut effect: visually cut off at bottom */
-            clip-path: inset(0 0 20% 0);
-            margin-bottom: -40px; /* pull up to compensate clip */
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-image::after {
-            content: "[ half‑cut product image ]";
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            color: #8e8e93;
-            font-size: 1.2rem;
-        }
-
-        /* two-column layouts */
-        .two-col {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .product-desc h2 {
-            font-size: 2.8rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            margin-bottom: 8px;
-        }
-
-        .product-desc h3 {
-            font-size: 1.4rem;
-            font-weight: 400;
-            color: #6e6e73;
-            margin-bottom: 24px;
-        }
-
-        .product-desc p {
-            font-size: 1.2rem;
-            margin-bottom: 32px;
-            color: #2d2d2f;
-        }
-
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            margin: 40px 0;
-        }
-
-        .step {
-            background: #f9f9fb;
-            border-radius: 18px;
-            padding: 24px;
-        }
-
-        .step .icon-box {
-            width: 48px;
-            height: 48px;
-            background: #e9e9ed;
-            border-radius: 16px;
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #1D1D1F;
-            font-weight: 600;
-        }
-
-        .step p {
-            font-size: 1rem;
             margin: 0;
+            padding: 16px;
         }
-
-        .specs {
-            background: #f9f9fb;
-            border-radius: 24px;
-            padding: 24px;
-            margin-top: 30px;
-        }
-
-        .specs table {
+        .game-container {
+            max-width: 800px;
             width: 100%;
-            border-collapse: collapse;
-            text-align: left;
+            background: #1e2b2f;
+            border-radius: 32px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8), 0 0 0 2px #4a3b2b inset;
+            padding: 24px;
+            border: 1px solid #7e6b4f;
         }
-
-        .specs th, .specs td {
-            padding: 12px 0;
-            border-bottom: 1px solid #e9e9ed;
+        .title-panel {
+            text-align: center;
+            margin-bottom: 20px;
         }
-
-        .specs th {
-            font-weight: 600;
+        .title-panel h1 {
+            color: #ebd6b0;
+            text-shadow: 0 0 8px #6b4f3a, 0 2px 0 #2a1e14;
+            font-size: 2.4rem;
+            letter-spacing: 6px;
+            margin: 0;
+            font-weight: normal;
+            border-bottom: 2px dashed #6e5b48;
+            padding-bottom: 10px;
         }
-
-        .color-swatches {
-            display: flex;
-            gap: 20px;
-            margin: 30px 0;
-            flex-wrap: wrap;
+        .story-pane {
+            background: #271f18;
+            border: 3px ridge #9b8569;
+            border-radius: 30px;
+            padding: 28px 24px;
+            min-height: 280px;
+            color: #efe3cc;
+            font-size: 1.25rem;
+            line-height: 1.6;
+            box-shadow: inset 0 0 30px #0a0806;
+            text-shadow: 0 1px 2px black;
+            white-space: pre-wrap;
+            margin-bottom: 28px;
+            background-image: radial-gradient(circle at 30% 40%, #3f3328 2px, transparent 2px), 
+                              radial-gradient(circle at 70% 80%, #3f3328 1px, transparent 2px);
+            background-size: 40px 40px;
         }
-
-        .swatch {
+        .choices-area {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            gap: 8px;
+            gap: 14px;
+            margin-top: 20px;
         }
-
-        .color-circle {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: #ccc;
-        }
-
-        .coral { background: #FF7F6B; }
-        .moss { background: #8A9B6F; }
-        .clay { background: #C46B4F; }
-        .slate { background: #6B7280; }
-        .mustard { background: #E1AD01; }
-        .sky { background: #A7D0E4; }
-
-        .philosophy {
-            background: #f9f9fb;
-            border-radius: 40px;
-            padding: 80px;
-        }
-
-        .two-col-simple {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-top: 40px;
-        }
-
-        .simple-card {
-            background: white;
-            padding: 32px;
-            border-radius: 24px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
-        }
-
-        .founder-note {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 40px;
-            align-items: center;
-            background: #f9f9fb;
-            border-radius: 40px;
-            padding: 60px;
-        }
-
-        .founder-photo-placeholder {
-            width: 100%;
-            aspect-ratio: 1/1;
-            background: #d9d9e3;
-            border-radius: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #6e6e73;
-        }
-
-        .metrics-row {
-            display: flex;
-            justify-content: space-between;
-            gap: 30px;
-            margin-top: 30px;
-            flex-wrap: wrap;
-        }
-
-        .metric-item {
-            flex: 1;
-            min-width: 160px;
-            background: #f9f9fb;
-            padding: 24px;
-            border-radius: 24px;
-            text-align: center;
-        }
-
-        .metric-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            line-height: 1.2;
-        }
-
-        .footer {
-            border-top: 1px solid #e9e9ed;
-            padding: 60px 0 30px;
-        }
-
-        .footer-cta {
-            text-align: center;
-            max-width: 500px;
-            margin: 0 auto 60px;
-        }
-
-        .footer-cta h2 {
-            font-size: 2.2rem;
-            margin-bottom: 24px;
-        }
-
-        .email-input {
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .email-input input {
-            padding: 14px 20px;
-            border-radius: 40px;
-            border: 1px solid #d2d2d6;
-            font-size: 1rem;
-            flex: 1 1 250px;
-            background: white;
-        }
-
-        .email-input button {
-            padding: 14px 32px;
-            border-radius: 40px;
-            border: none;
-            background: #1D1D1F;
-            color: white;
-            font-weight: 600;
+        .choice-btn {
+            background: #2b3a40;
+            border: 2px solid #b7a17e;
+            color: #f7eedb;
+            font-size: 1.2rem;
+            padding: 16px 22px;
+            border-radius: 60px;
             cursor: pointer;
+            text-align: left;
+            font-weight: 500;
+            letter-spacing: 0.4px;
+            box-shadow: 0 6px 0 #142126, 0 8px 10px black;
+            transition: all 0.07s;
+            backdrop-filter: blur(2px);
         }
-
-        .footer-links {
+        .choice-btn:hover {
+            background: #3f535c;
+            border-color: #e4ccaa;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 0 #142126, 0 12px 18px black;
+        }
+        .choice-btn:active {
+            transform: translateY(4px);
+            box-shadow: 0 2px 0 #142126, 0 5px 10px black;
+        }
+        .utility-bar {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-            gap: 20px;
+            justify-content: flex-end;
+            margin-top: 28px;
         }
-
-        .footer-links a {
-            text-decoration: none;
-            color: #6e6e73;
-            margin-right: 24px;
-        }
-
-        .signature {
-            text-align: center;
-            color: #b9b9be;
-            font-size: 0.9rem;
+        .restart-btn {
+            background: none;
+            border: 2px solid #6f5e49;
+            color: #c9b696;
+            font-size: 1rem;
+            padding: 8px 22px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-family: inherit;
+            transition: 0.2s;
             letter-spacing: 1px;
         }
-
-        hr {
-            border: none;
-            border-top: 1px solid #e9e9ed;
-            margin: 40px 0;
+        .restart-btn:hover {
+            background: #3f3227;
+            color: #f3dfc4;
+            border-color: #b59f7b;
         }
-
-        @media (max-width: 800px) {
-            h1 { font-size: 2.8rem; }
-            .two-col, .founder-note { grid-template-columns: 1fr; }
-            .nav-links { display: none; } /* simplify for wireframe */
-            .nav-container { justify-content: space-between; }
+        .status-tag {
+            color: #bda78b;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            text-align: right;
+            font-style: italic;
+            border-top: 1px dotted #6b5b47;
+            padding-top: 12px;
         }
     </style>
 </head>
 <body>
-    <!-- navigation -->
-    <nav>
-        <div class="nav-container">
-            <a href="#" class="logo">SIMPLY</a>
-            <div class="nav-links">
-                <a href="#locked">The Products</a>
-                <a href="#philosophy">The Why</a>
-                <a href="#founder">Contact Aden</a>
-                <a href="#waitlist" class="waitlist-btn">Waitlist</a>
-            </div>
-            <!-- mobile friendly minimal: show just logo and waitlist (simplified) -->
-        </div>
-    </nav>
+<div class="game-container">
+    <div class="title-panel">
+        <h1>SHADOWBROOK</h1>
+    </div>
+    <div id="storyText" class="story-pane">
+        <!-- story appears here -->
+    </div>
+    <div id="choicesContainer" class="choices-area">
+        <!-- choice buttons dynamically -->
+    </div>
+    <div class="utility-bar">
+        <button id="restartBtn" class="restart-btn">⟲ restart the mystery</button>
+    </div>
+    <div id="inventoryInfo" class="status-tag">
+        <!-- clues / flags appear here -->
+    </div>
+</div>
 
-    <!-- hero -->
-    <section class="hero">
-        <div class="container hero-content">
-            <h1>Daily life is full of small frustrations.</h1>
-            <div class="subhead">We're fixing them. One product at a time.</div>
-            <a href="#locked" class="cta-button">See what we're building ↓</a>
-        </div>
-        <div class="hero-image"></div>
-    </section>
+<script>
+    (function() {
+        // ---------- GAME STATE ----------
+        let gameState = {
+            // clues / flags (don't spoil, just tracking)
+            talkedMartha: false,
+            metGhost: false,
+            libraryClue: false,
+            sheriffTrust: false,
+            cemeteryVisited: false,
+            shadowAmulet: false,
+            diaryFound: false,
+            shadowManRevealed: false,
+            eldritchSecret: false,
+            // which scene we are on
+            currentSceneId: 'intro'
+        };
 
-    <!-- LOCKED section -->
-    <section id="locked">
-        <div class="container">
-            <div class="two-col">
-                <div>
-                    <div class="image-placeholder" style="width:100%; aspect-ratio:1/1; display:flex; align-items:center; justify-content:center;">
-                        [ Frame & Backplate exploded view ]
-                    </div>
-                </div>
-                <div class="product-desc">
-                    <h2>LOCKED™</h2>
-                    <h3>The phone case that pays for your mistakes.</h3>
-                    <p>Phone insurance is broken. It's expensive, confusing, and if you don't break your phone, you just lost $200. LOCKED is different. It's a high-performance modular case that includes two years of repair coverage. If you break your screen, we pay 80%. You pay 20%. That's it.</p>
-                </div>
-            </div>
+        // ---------- SCENE DEFINITIONS (branching narrative, no spoilers upfront) ----------
+        const scenes = {
+            // --- INTRO / START ---
+            intro: {
+                desc: `October mist clings to the pines as you cross the town line. SHADOWBROOK — population 892 — welcomes you with flickering streetlamps. You're here to investigate the strange death of historian Elias Thorne. Sheriff Hayes ruled it an accident, but something gnaws at you.\n\nThe innkeeper at the WHISPERING PINES INN, Martha, wipes a glass as you enter. "You must be the journalist. Room 7, last one at the end. Elias used to stay there, you know... before." She stares into the distance.`,
+                choices: [
+                    { text: "👉 Press Martha for more about Elias", nextScene: 'marthaTalk' },
+                    { text: "🛌 Go to your room, rest and think", nextScene: 'roomFirstNight' },
+                    { text: "🚶 Take a walk through the foggy town", nextScene: 'townWalk' }
+                ]
+            },
+            marthaTalk: {
+                desc: `Martha sighs, wringing a rag. "Elias was here almost every night, researching old deeds and town records. Lately he seemed haunted — muttered about a 'shadow man' watching him from the woods. I thought it was just his imagination... then the stairs broke. Or so they say." She leans closer: "His room is still locked. Sheriff took the key, but I got a spare. You didn't hear it from me."`,
+                choices: [
+                    { text: "🗝️ Ask for the spare key to Elias's room", nextScene: 'getKey', action: ()=> { gameState.talkedMartha = true; } },
+                    { text: "🌲 Go for that walk first", nextScene: 'townWalk' },
+                    { text: "🛌 Rest for now", nextScene: 'roomFirstNight' }
+                ]
+            },
+            getKey: {
+                desc: `Martha slides a rusty key across the counter. "Don't tell anyone. Room 7... but be careful. Strange sounds come from there at night." You pocket the key.`,
+                choices: [
+                    { text: "🔑 Go directly to Elias's room", nextScene: 'eliasRoom' },
+                    { text: "🏨 Go outside, maybe later", nextScene: 'townWalk' }
+                ]
+            },
+            roomFirstNight: {
+                desc: `You lie down but sleep doesn't come. At 2:13 AM, floorboards creak in the hallway — soft, deliberate. Through the door crack you see a flicker of lantern light, then nothing. In the morning, a small envelope slides under your door: a torn page from Elias's diary: "the shadow knows the old way... beneath the chapel..."`,
+                choices: [
+                    { text: "🔍 Investigate the old chapel (north of town)", nextScene: 'oldChapel' },
+                    { text: "📚 Visit the town library first", nextScene: 'library' },
+                    { text: "🏛️ Talk to Sheriff Hayes", nextScene: 'sheriffOffice' }
+                ]
+            },
+            townWalk: {
+                desc: `Fog swirls along Main Street. You pass the darkened library, the sheriff's office (light on), and the old cemetery where willows weep. A hunched figure lingers by the gate — then vanishes behind a tombstone. Did you imagine it?`,
+                choices: [
+                    { text: "⚰️ Enter the cemetery", nextScene: 'cemeteryEncounter' },
+                    { text: "📖 Try the library", nextScene: 'library' },
+                    { text: "🏛️ Sheriff's office", nextScene: 'sheriffOffice' }
+                ]
+            },
+            cemeteryEncounter: {
+                desc: `Gravestones lean like tired sentinels. You find fresh flowers on Elias Thorne's grave — and a whisper behind you: "He shouldn't have dug up the past." You spin around. A translucent figure in old-fashioned clothes points toward the woods and fades. A cold spot lingers. On the grave, a small amulet with a swirling stone lies half-hidden.`,
+                choices: [
+                    { text: "🪬 Take the strange amulet", nextScene: 'takeAmulet', action: ()=> { gameState.shadowAmulet = true; gameState.cemeteryVisited = true; } },
+                    { text: "🏃 Leave it and run to the library", nextScene: 'library' }
+                ]
+            },
+            takeAmulet: {
+                desc: `The amulet hums faintly in your palm. For a moment, you see a shadow flit between the trees — taller than a man, darker than night. It's gone. You feel watched.`,
+                choices: [
+                    { text: "📚 Go to the library now", nextScene: 'library' },
+                    { text: "🏛️ Show it to the sheriff", nextScene: 'sheriffOffice' }
+                ]
+            },
+            library: {
+                desc: `The Shadowbrook library smells of dust and old leather. The librarian, Ms. Crain, peers at you over half-moon glasses. "Elias spent hours in the archives. He was obsessed with the town's founding family — the Varnes. They vanished in 1889 after a fire. He believed they didn't die... they went underground." She hands you a crumbling map: "Found this in his usual spot." The map marks a hidden root cellar near the old chapel.`,
+                choices: [
+                    { text: "🗺️ Head to the root cellar", nextScene: 'cellar', action: ()=> { gameState.libraryClue = true; } },
+                    { text: "🏛️ Tell the sheriff about this", nextScene: 'sheriffOffice' },
+                    { text: "🔑 Return to the inn / Elias's room", nextScene: 'eliasRoom' }
+                ]
+            },
+            sheriffOffice: {
+                desc: `Sheriff Hayes is a solid man with tired eyes. "Elias? Tragic accident. Case closed." He seems eager to change the subject. If you mention the shadow man or the Varnes, his jaw tightens. "Old wives' tales. Leave it alone." You notice a Varnes family Bible on his shelf, hidden behind a stack of files.`,
+                choices: [
+                    { text: "🤝 Act friendly, ask about the Bible", nextScene: 'sheriffBible', action: ()=> { gameState.sheriffTrust = true; } },
+                    { text: "😠 Press him — you don't buy the accident", nextScene: 'sheriffConfront' }
+                ]
+            },
+            sheriffBible: {
+                desc: `Hayes reluctantly hands you the Bible. "Found it in Elias's room. He wanted me to keep it safe." Inside, a page is marked: "Varnes line ended? or hiding beneath?" Handwritten notes mention a "shadow covenant" and a ritual every 50 years. The next is tomorrow — Halloween.`,
+                choices: [
+                    { text: "🔮 Investigate the ritual site (old chapel)", nextScene: 'oldChapel' },
+                    { text: "📜 Go to Elias's room again", nextScene: 'eliasRoom' }
+                ]
+            },
+            sheriffConfront: {
+                desc: `Hayes's face darkens. "I warned you." He ushers you out. But as you leave, he mutters: "The shadow takes those who dig too deep. Forget it, if you value your soul."`,
+                choices: [
+                    { text: "😨 Return to the inn, shaken", nextScene: 'roomLater' },
+                    { text: "🌲 Ignore him — go to the woods", nextScene: 'cellar' }
+                ]
+            },
+            eliasRoom: {
+                desc: `You unlock Room 7. It's tidy except for a scattered notebook. Sketches of occult symbols, a family tree ending in fire. One page reads: "The shadow man is real — not a ghost, but a guardian. It guards the Varnes' secret. They found immortality beneath the chapel. Elias, you're a fool. But I must know." A loose floorboard hides a diary.`,
+                choices: [
+                    { text: "📖 Read the hidden diary", nextScene: 'diaryRevelation', action: ()=> { gameState.diaryFound = true; } },
+                    { text: "🏃 Go to the chapel now", nextScene: 'oldChapel' }
+                ]
+            },
+            diaryRevelation: {
+                desc: `Elias's diary: "Oct 28 — I found the entrance. The Varnes didn't die; they sleep. The shadow man is their sentinel. If I perform the rite at midnight on Halloween, I can wake them — or bind them forever. But the sentinel will try to stop me. I need the amulet of the first Varnes, buried in the old cemetery."`,
+                choices: [
+                    { text: "⚰️ You have the amulet? (if you took it)", nextScene: 'finalApproach', condition: () => gameState.shadowAmulet },
+                    { text: "🪦 Go find the amulet in the cemetery", nextScene: 'cemeteryEncounter' },
+                    { text: "⛪ Rush to the chapel without amulet", nextScene: 'chapelNoAmulet' }
+                ]
+            },
+            oldChapel: {
+                desc: `The chapel is a crumbling stone shell. Behind the altar, a trapdoor leads down — just as the map showed. Faint chanting echoes from below. The air is icy.`,
+                choices: [
+                    { text: "⬇️ Descend into the darkness", nextScene: 'finalApproach' },
+                    { text: "😰 Go back for backup (sheriff?)", nextScene: 'sheriffOfficeFinal' }
+                ]
+            },
+            sheriffOfficeFinal: {
+                desc: `You burst into the sheriff's office. Hayes looks up, weary. "You found something." You explain. He sighs: "My family has guarded this secret for generations. Tonight it ends. I'll come with you." He grabs a lantern and an old revolver. Together you return to the chapel.`,
+                choices: [
+                    { text: "👥 Go down together", nextScene: 'finalWithSheriff' }
+                ]
+            },
+            cellar: {
+                desc: `The root cellar behind the chapel is filled with decayed crates. But one wall is false — beyond it, a narrow tunnel descends into the earth. The amulet grows warm.`,
+                choices: [
+                    { text: "🚶 Enter the tunnel", nextScene: 'finalApproach' },
+                    { text: "🔙 Go back and get the sheriff", nextScene: 'sheriffOfficeFinal' }
+                ]
+            },
+            // --- FINAL SCENES / ENDINGS (various, no single spoiler) ---
+            chapelNoAmulet: {
+                desc: `You descend without the amulet. In the vault, seven hooded figures stand around a stone altar. The shadow man — a towering wraith — turns to you. "You are not the heir." It reaches for you. You try to run, but the tunnel shifts... You wake in your inn room, the door ajar. A note: "Leave Shadowbrook. Forever." You leave, but the mystery haunts your dreams. (END: Driven away)`,
+                choices: [ { text: "✨ Restart the mystery", nextScene: 'intro' } ]
+            },
+            finalApproach: {
+                desc: `You stand before a vast underground chamber. Seven sarcophagi line the walls — the Varnes. The shadow man looms, whispering: "Bearer of the amulet, you may either wake them or seal them. Choose." In your hand, the amulet pulses.`,
+                choices: [
+                    { text: "🔮 Wake the Varnes (unlock immortality?)", nextScene: 'endingWake' },
+                    { text: "🛡️ Use the amulet to seal them forever", nextScene: 'endingSeal' }
+                ]
+            },
+            finalWithSheriff: {
+                desc: `Hayes faces the shadow man. "I am the last Hayes, keeper of the oath. This ends." He speaks old words from the Bible. The shadow man screams and collapses into mist. The sarcophagi crack and turn to dust. Hayes turns to you: "It's done. The Varnes are no more. Shadowbrook can rest." You've solved the mystery — and ended the curse.`,
+                choices: [ { text: "🌟 Victory. Restart?", nextScene: 'intro' } ]
+            },
+            endingWake: {
+                desc: `You speak the rite. The sarcophagi lids slide open. Ancient forms stir, but they are not human — they are shadows wearing flesh. They thank you and offer you a place among them. You become the new guardian, forever bound to the underground. The town forgets you. (END: Shadow keeper)`,
+                choices: [ { text: "🔄 Restart", nextScene: 'intro' } ]
+            },
+            endingSeal: {
+                desc: `You press the amulet to the altar. A shockwave throws you back — the chamber collapses. You wake above ground at dawn. The chapel is gone, replaced by a spring. The shadow man is only a legend now. You've brought peace to Shadowbrook.`,
+                choices: [ { text: "🍂 Mystery solved. Restart?", nextScene: 'intro' } ]
+            },
+            roomLater: {
+                desc: `Back in your room, restless, you pack your things. But something slides under the door — a photograph of you, taken through the window. A message: "Last warning." You leave town at sunrise, story unfinished. (END: Driven away)`,
+                choices: [ { text: "🔄 Try again", nextScene: 'intro' } ]
+            }
+        };
 
-            <!-- 3-step icons -->
-            <div class="grid-3">
-                <div class="step">
-                    <div class="icon-box">📱</div>
-                    <p><strong>Register.</strong> Scan the frame. Takes 10 seconds.</p>
-                </div>
-                <div class="step">
-                    <div class="icon-box">💔</div>
-                    <p><strong>Break.</strong> Screen or back glass. It happens.</p>
-                </div>
-                <div class="step">
-                    <div class="icon-box">🔧</div>
-                    <p><strong>Fix.</strong> Use your digital voucher at any partner shop.</p>
-                </div>
-            </div>
+        // Helper to apply action from choice
+        function applyAction(choice) {
+            if (choice.action) {
+                choice.action();
+            }
+        }
 
-            <!-- specs table -->
-            <div class="specs">
-                <table>
-                    <tr><th>Part</th><th>Material</th><th>Purpose</th></tr>
-                    <tr><td>The Frame</td><td>High-Impact Polymer</td><td>The "Shield" + The Coverage</td></tr>
-                    <tr><td>The Backplate</td><td>Magnetic Matte Finish</td><td>The Personality</td></tr>
-                </table>
-            </div>
-        </div>
-    </section>
+        // Render current scene based on gameState.currentSceneId
+        function renderScene() {
+            const sceneId = gameState.currentSceneId;
+            const scene = scenes[sceneId];
+            if (!scene) {
+                // fallback
+                document.getElementById('storyText').innerText = "Something went wrong in the fog...";
+                return;
+            }
 
-    <!-- THREAD section -->
-    <section style="background:#f9f9fb; padding:100px 0;">
-        <div class="container">
-            <div class="two-col" style="grid-template-columns:1.2fr 0.8fr;">
-                <div class="product-desc">
-                    <h2>THREAD™</h2>
-                    <h3>Cables that actually work. In colors that actually look good.</h3>
-                    <p>We're tired of $50 "premium" cables and $5 trash cables. THREAD is the middle ground. Thick rubber outside. Braided woven sheath inside. Reinforced ends. No fake charging speed claims. Just a really good cord.</p>
-                </div>
-                <div>
-                    <div class="image-placeholder" style="width:100%; aspect-ratio:1/1; background:#e5e5ea; display:flex; align-items:center; justify-content:center;">
-                        [ 6 Color Cords coiled ]
-                    </div>
-                </div>
-            </div>
+            // Filter choices that have conditions
+            let availableChoices = scene.choices;
+            if (scene.choices) {
+                availableChoices = scene.choices.filter(ch => {
+                    if (ch.condition && typeof ch.condition === 'function') {
+                        return ch.condition();
+                    }
+                    return true;
+                });
+            }
 
-            <!-- color swatches -->
-            <div class="color-swatches">
-                <div class="swatch"><span class="color-circle coral"></span> Coral</div>
-                <div class="swatch"><span class="color-circle moss"></span> Moss</div>
-                <div class="swatch"><span class="color-circle clay"></span> Clay</div>
-                <div class="swatch"><span class="color-circle slate"></span> Slate</div>
-                <div class="swatch"><span class="color-circle mustard"></span> Mustard</div>
-                <div class="swatch"><span class="color-circle sky"></span> Sky</div>
-            </div>
-        </div>
-    </section>
+            // Display description
+            document.getElementById('storyText').innerText = scene.desc;
 
-    <!-- philosophy -->
-    <section id="philosophy" class="philosophy">
-        <div class="container" style="max-width:1000px;">
-            <h2 style="font-size:2.8rem; margin-bottom:20px; text-align:center;">"Simply Simple"</h2>
-            <div class="two-col-simple">
-                <div class="simple-card">
-                    <p style="font-size:1.3rem; font-weight:600;">Simple is:</p>
-                    <p>It works how you expect. It doesn't break for no reason. You don't have to think about it.</p>
-                </div>
-                <div class="simple-card">
-                    <p style="font-size:1.3rem; font-weight:600;">Simple isn't:</p>
-                    <p>Cheap materials. Ugly design. Disposable junk. Boring aesthetics.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+            // Render choice buttons
+            const choicesDiv = document.getElementById('choicesContainer');
+            choicesDiv.innerHTML = '';
+            if (availableChoices.length === 0) {
+                // In case no choices, add restart option
+                const restartBtn = document.createElement('button');
+                restartBtn.className = 'choice-btn';
+                restartBtn.innerText = '🔁 Restart';
+                restartBtn.addEventListener('click', () => {
+                    resetGame();
+                });
+                choicesDiv.appendChild(restartBtn);
+            } else {
+                availableChoices.forEach((choice, index) => {
+                    const btn = document.createElement('button');
+                    btn.className = 'choice-btn';
+                    btn.innerText = choice.text;
+                    btn.addEventListener('click', () => {
+                        applyAction(choice);
+                        if (choice.nextScene) {
+                            gameState.currentSceneId = choice.nextScene;
+                            renderScene();
+                        } else {
+                            console.warn('no nextScene');
+                        }
+                    });
+                    choicesDiv.appendChild(btn);
+                });
+            }
 
-    <!-- founder note -->
-    <section id="founder">
-        <div class="container founder-note">
-            <div class="founder-photo-placeholder">
-                [ candid photo of Aden ]
-            </div>
-            <div>
-                <p style="font-size:1.6rem; font-weight:500; line-height:1.3;">“I started SIMPLY because the bar for daily products is too low. I don't have a fancy corporate resume, but I know what it's like to buy a cord that frays in six months. We're not trying to change the world—just the stuff you use every day.”</p>
-                <p style="margin-top:24px; font-weight:600;">— Aden Seven Anderson</p>
-            </div>
-        </div>
-    </section>
+            // Update small clue panel (shows some flags but not spoilers)
+            const clueDiv = document.getElementById('inventoryInfo');
+            let clueText = '';
+            if (gameState.shadowAmulet) clueText += '🪬 amulet ';
+            if (gameState.diaryFound) clueText += '📖 diary ';
+            if (gameState.libraryClue) clueText += '🗺️ map ';
+            if (gameState.sheriffTrust) clueText += '👮 trust ';
+            if (gameState.metGhost) clueText += '👻 ghost ';
+            if (clueText === '') clueText = 'no clues yet';
+            clueDiv.innerText = '🔍 ' + clueText;
+        }
 
-    <!-- business / investment -->
-    <section style="padding:60px 0;">
-        <div class="container">
-            <h2 style="font-size:2.4rem;">Building a real company.</h2>
-            <p style="font-size:1.3rem; color:#6e6e73; max-width:700px;">We aren't chasing unicorn status. We're chasing durability. We make money by designing things well and standing behind them.</p>
-            <div class="metrics-row">
-                <div class="metric-item"><div class="metric-number">2‑Year</div> Warranty on all THREAD</div>
-                <div class="metric-item"><div class="metric-number">80%</div> Coverage on LOCKED claims</div>
-                <div class="metric-item"><div class="metric-number">100%</div> Recycled packaging</div>
-            </div>
-        </div>
-    </section>
+        // Reset game to beginning with fresh state
+        function resetGame() {
+            gameState = {
+                talkedMartha: false,
+                metGhost: false,
+                libraryClue: false,
+                sheriffTrust: false,
+                cemeteryVisited: false,
+                shadowAmulet: false,
+                diaryFound: false,
+                shadowManRevealed: false,
+                eldritchSecret: false,
+                currentSceneId: 'intro'
+            };
+            renderScene();
+        }
 
-    <!-- waitlist / footer -->
-    <section id="waitlist" style="background:#f9f9fb; padding:80px 0;">
-        <div class="container footer-cta">
-            <h2>Want to be the first to know?</h2>
-            <div class="email-input">
-                <input type="email" placeholder="Your email">
-                <button>Join the Waitlist</button>
-            </div>
-        </div>
-    </section>
+        // Attach restart button
+        document.getElementById('restartBtn').addEventListener('click', resetGame);
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-links">
-                <div>
-                    <a href="mailto:aden@simply.xyz">aden@simply.xyz</a>
-                    <a href="#">Instagram</a>
-                    <a href="#">X/Twitter</a>
-                </div>
-                <div>© SIMPLY, Inc.</div>
-            </div>
-            <hr>
-            <div class="signature">
-                ^Simply Designed
-            </div>
-        </div>
-    </footer>
+        // Initial render
+        renderScene();
 
-    <!-- simple smooth scroll for anchor links (optional) -->
-    <script>
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) target.scrollIntoView({ behavior: 'smooth' });
-            });
-        });
-    </script>
+        // (Optional) Save/Load not needed, but we ensure state is mutable.
+    })();
+</script>
 </body>
 </html>
