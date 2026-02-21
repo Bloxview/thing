@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIMPLY — daily needs, simply simple</title>
+    <!-- Using Inter, a clean geometric sans-serif -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #FFFFFF;
+            color: #1D1D1F;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* sticky navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px 24px;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            letter-spacing: -0.02em;
+            color: #1D1D1F;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #1D1D1F;
+            font-weight: 500;
+            font-size: 1rem;
+        }
+
+        .waitlist-btn {
+            background-color: #1D1D1F;
+            color: white !important;
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .waitlist-btn:hover {
+            background-color: #3a3a3e;
+        }
+
+        /* sections */
+        section {
+            padding: 100px 0;
+        }
+
+        .hero {
+            padding: 80px 0 100px;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 720px;
+            margin: 0 auto 60px;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+
+        .subhead {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: #6e6e73;
+            margin-bottom: 40px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: none;
+            border: 1px solid #1D1D1F;
+            color: #1D1D1F;
+            padding: 12px 30px;
+            border-radius: 40px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .cta-button:hover {
+            background: #1D1D1F;
+            color: white;
+        }
+
+        /* wireframe image boxes */
+        .image-placeholder {
+            background: #f5f5f7;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #8e8e93;
+            font-size: 1rem;
+            font-weight: 500;
+            border: 2px dashed #d2d2d6;
+        }
+
+        .hero-image {
+            width: 100%;
+            max-width: 900px;
+            height: 400px;
+            margin: 0 auto;
+            background: #f0f0f4;
+            border-radius: 30px;
+            /* half‑cut effect: visually cut off at bottom */
+            clip-path: inset(0 0 20% 0);
+            margin-bottom: -40px; /* pull up to compensate clip */
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-image::after {
+            content: "[ half‑cut product image ]";
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            color: #8e8e93;
+            font-size: 1.2rem;
+        }
+
+        /* two-column layouts */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .product-desc h2 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+        }
+
+        .product-desc h3 {
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: #6e6e73;
+            margin-bottom: 24px;
+        }
+
+        .product-desc p {
+            font-size: 1.2rem;
+            margin-bottom: 32px;
+            color: #2d2d2f;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin: 40px 0;
+        }
+
+        .step {
+            background: #f9f9fb;
+            border-radius: 18px;
+            padding: 24px;
+        }
+
+        .step .icon-box {
+            width: 48px;
+            height: 48px;
+            background: #e9e9ed;
+            border-radius: 16px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1D1D1F;
+            font-weight: 600;
+        }
+
+        .step p {
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        .specs {
+            background: #f9f9fb;
+            border-radius: 24px;
+            padding: 24px;
+            margin-top: 30px;
+        }
+
+        .specs table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        .specs th, .specs td {
+            padding: 12px 0;
+            border-bottom: 1px solid #e9e9ed;
+        }
+
+        .specs th {
+            font-weight: 600;
+        }
+
+        .color-swatches {
+            display: flex;
+            gap: 20px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .swatch {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .color-circle {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #ccc;
+        }
+
+        .coral { background: #FF7F6B; }
+        .moss { background: #8A9B6F; }
+        .clay { background: #C46B4F; }
+        .slate { background: #6B7280; }
+        .mustard { background: #E1AD01; }
+        .sky { background: #A7D0E4; }
+
+        .philosophy {
+            background: #f9f9fb;
+            border-radius: 40px;
+            padding: 80px;
+        }
+
+        .two-col-simple {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .simple-card {
+            background: white;
+            padding: 32px;
+            border-radius: 24px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+        }
+
+        .founder-note {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            align-items: center;
+            background: #f9f9fb;
+            border-radius: 40px;
+            padding: 60px;
+        }
+
+        .founder-photo-placeholder {
+            width: 100%;
+            aspect-ratio: 1/1;
+            background: #d9d9e3;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6e6e73;
+        }
+
+        .metrics-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .metric-item {
+            flex: 1;
+            min-width: 160px;
+            background: #f9f9fb;
+            padding: 24px;
+            border-radius: 24px;
+            text-align: center;
+        }
+
+        .metric-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .footer {
+            border-top: 1px solid #e9e9ed;
+            padding: 60px 0 30px;
+        }
+
+        .footer-cta {
+            text-align: center;
+            max-width: 500px;
+            margin: 0 auto 60px;
+        }
+
+        .footer-cta h2 {
+            font-size: 2.2rem;
+            margin-bottom: 24px;
+        }
+
+        .email-input {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .email-input input {
+            padding: 14px 20px;
+            border-radius: 40px;
+            border: 1px solid #d2d2d6;
+            font-size: 1rem;
+            flex: 1 1 250px;
+            background: white;
+        }
+
+        .email-input button {
+            padding: 14px 32px;
+            border-radius: 40px;
+            border: none;
+            background: #1D1D1F;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: #6e6e73;
+            margin-right: 24px;
+        }
+
+        .signature {
+            text-align: center;
+            color: #b9b9be;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e9e9ed;
+            margin: 40px 0;
+        }
+
+        @media (max-width: 800px) {
+            h1 { font-size: 2.8rem; }
+            .two-col, .founder-note { grid-template-columns: 1fr; }
+            .nav-links { display: none; } /* simplify for wireframe */
+            .nav-container { justify-content: space-between; }
+        }
+    </style>
+</head>
+<body>
+    <!-- navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">SIMPLY</a>
+            <div class="nav-links">
+                <a href="#locked">The Products</a>
+                <a href="#philosophy">The Why</a>
+                <a href="#founder">Contact Aden</a>
+                <a href="#waitlist" class="waitlist-btn">Waitlist</a>
+            </div>
+            <!-- mobile friendly minimal: show just logo and waitlist (simplified) -->
+        </div>
+    </nav>
+
+    <!-- hero -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Daily life is full of small frustrations.</h1>
+            <div class="subhead">We're fixing them. One product at a time.</div>
+            <a href="#locked" class="cta-button">See what we're building ↓</a>
+        </div>
+        <div class="hero-image"></div>
+    </section>
+
+    <!-- LOCKED section -->
+    <section id="locked">
+        <div class="container">
+            <div class="two-col">
+                <div>
+                    <div class="image-placeholder" style="width:100%; aspect-ratio:1/1; display:flex; align-items:center; justify-content:center;">
+                        [ Frame & Backplate exploded view ]
+                    </div>
+                </div>
+                <div class="product-desc">
+                    <h2>LOCKED™</h2>
+                    <h3>The phone case that pays for your mistakes.</h3>
+                    <p>Phone insurance is broken. It's expensive, confusing, and if you don't break your phone, you just lost $200. LOCKED is different. It's a high-performance modular case that includes two years of repair coverage. If you break your screen, we pay 80%. You pay 20%. That's it.</p>
+                </div>
+            </div>
+
+            <!-- 3-step icons -->
+            <div class="grid-3">
+                <div class="step">
+                    <div class="icon-box">📱</div>
+                    <p><strong>Register.</strong> Scan the frame. Takes 10 seconds.</p>
+                </div>
+                <div class="step">
+                    <div class="icon-box">💔</div>
+                    <p><strong>Break.</strong> Screen or back glass. It happens.</p>
+                </div>
+                <div class="step">
+                    <div class="icon-box">🔧</div>
+                    <p><strong>Fix.</strong> Use your digital voucher at any partner shop.</p>
+                </div>
+            </div>
+
+            <!-- specs table -->
+            <div class="specs">
+                <table>
+                    <tr><th>Part</th><th>Material</th><th>Purpose</th></tr>
+                    <tr><td>The Frame</td><td>High-Impact Polymer</td><td>The "Shield" + The Coverage</td></tr>
+                    <tr><td>The Backplate</td><td>Magnetic Matte Finish</td><td>The Personality</td></tr>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- THREAD section -->
+    <section style="background:#f9f9fb; padding:100px 0;">
+        <div class="container">
+            <div class="two-col" style="grid-template-columns:1.2fr 0.8fr;">
+                <div class="product-desc">
+                    <h2>THREAD™</h2>
+                    <h3>Cables that actually work. In colors that actually look good.</h3>
+                    <p>We're tired of $50 "premium" cables and $5 trash cables. THREAD is the middle ground. Thick rubber outside. Braided woven sheath inside. Reinforced ends. No fake charging speed claims. Just a really good cord.</p>
+                </div>
+                <div>
+                    <div class="image-placeholder" style="width:100%; aspect-ratio:1/1; background:#e5e5ea; display:flex; align-items:center; justify-content:center;">
+                        [ 6 Color Cords coiled ]
+                    </div>
+                </div>
+            </div>
+
+            <!-- color swatches -->
+            <div class="color-swatches">
+                <div class="swatch"><span class="color-circle coral"></span> Coral</div>
+                <div class="swatch"><span class="color-circle moss"></span> Moss</div>
+                <div class="swatch"><span class="color-circle clay"></span> Clay</div>
+                <div class="swatch"><span class="color-circle slate"></span> Slate</div>
+                <div class="swatch"><span class="color-circle mustard"></span> Mustard</div>
+                <div class="swatch"><span class="color-circle sky"></span> Sky</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- philosophy -->
+    <section id="philosophy" class="philosophy">
+        <div class="container" style="max-width:1000px;">
+            <h2 style="font-size:2.8rem; margin-bottom:20px; text-align:center;">"Simply Simple"</h2>
+            <div class="two-col-simple">
+                <div class="simple-card">
+                    <p style="font-size:1.3rem; font-weight:600;">Simple is:</p>
+                    <p>It works how you expect. It doesn't break for no reason. You don't have to think about it.</p>
+                </div>
+                <div class="simple-card">
+                    <p style="font-size:1.3rem; font-weight:600;">Simple isn't:</p>
+                    <p>Cheap materials. Ugly design. Disposable junk. Boring aesthetics.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- founder note -->
+    <section id="founder">
+        <div class="container founder-note">
+            <div class="founder-photo-placeholder">
+                [ candid photo of Aden ]
+            </div>
+            <div>
+                <p style="font-size:1.6rem; font-weight:500; line-height:1.3;">“I started SIMPLY because the bar for daily products is too low. I don't have a fancy corporate resume, but I know what it's like to buy a cord that frays in six months. We're not trying to change the world—just the stuff you use every day.”</p>
+                <p style="margin-top:24px; font-weight:600;">— Aden Seven Anderson</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- business / investment -->
+    <section style="padding:60px 0;">
+        <div class="container">
+            <h2 style="font-size:2.4rem;">Building a real company.</h2>
+            <p style="font-size:1.3rem; color:#6e6e73; max-width:700px;">We aren't chasing unicorn status. We're chasing durability. We make money by designing things well and standing behind them.</p>
+            <div class="metrics-row">
+                <div class="metric-item"><div class="metric-number">2‑Year</div> Warranty on all THREAD</div>
+                <div class="metric-item"><div class="metric-number">80%</div> Coverage on LOCKED claims</div>
+                <div class="metric-item"><div class="metric-number">100%</div> Recycled packaging</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- waitlist / footer -->
+    <section id="waitlist" style="background:#f9f9fb; padding:80px 0;">
+        <div class="container footer-cta">
+            <h2>Want to be the first to know?</h2>
+            <div class="email-input">
+                <input type="email" placeholder="Your email">
+                <button>Join the Waitlist</button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links">
+                <div>
+                    <a href="mailto:aden@simply.xyz">aden@simply.xyz</a>
+                    <a href="#">Instagram</a>
+                    <a href="#">X/Twitter</a>
+                </div>
+                <div>© SIMPLY, Inc.</div>
+            </div>
+            <hr>
+            <div class="signature">
+                ^Simply Designed
+            </div>
+        </div>
+    </footer>
+
+    <!-- simple smooth scroll for anchor links (optional) -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>
