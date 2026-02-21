@@ -3,409 +3,538 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Whispers in Shadowbrook · dick nigger fagot mystery</title>
+    <title>stillwater · scholarship (demo)</title>
     <style>
         * {
             box-sizing: border-box;
-            font-family: 'Georgia', 'Times New Roman', serif;
+            margin: 0;
+            padding: 0;
         }
         body {
-            background: #0b1a1e;
+            background: black;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0;
+            font-family: 'Courier New', 'Georgia', 'Times New Roman', serif;
             padding: 16px;
-        }
-        .game-container {
-            max-width: 800px;
-            width: 100%;
-            background: #1e2b2f;
-            border-radius: 32px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.8), 0 0 0 2px #4a3b2b inset;
-            padding: 24px;
-            border: 1px solid #7e6b4f;
-        }
-        .title-panel {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .title-panel h1 {
-            color: #ebd6b0;
-            text-shadow: 0 0 8px #6b4f3a, 0 2px 0 #2a1e14;
-            font-size: 2.4rem;
-            letter-spacing: 6px;
             margin: 0;
-            font-weight: normal;
-            border-bottom: 2px dashed #6e5b48;
-            padding-bottom: 10px;
         }
-        .story-pane {
-            background: #271f18;
-            border: 3px ridge #9b8569;
-            border-radius: 30px;
+        .game-wrapper {
+            width: 100%;
+            max-width: 820px;
+            background: black;
+            box-shadow: 0 0 40px rgba(70, 130, 200, 0.2);
+            border-radius: 32px;
+            border: 1px solid #1e3a4a;
+            padding: 24px 22px;
+        }
+        /* ambient light bloom effect */
+        .light-panel {
+            background: #0b0c0e;
+            border-radius: 28px;
+            padding: 20px 22px;
+            box-shadow: 0 0 60px #1f4b6e33, inset 0 0 20px #0a283a;
+            transition: box-shadow 0.5s ease;
+            border: 1px solid #2b5068;
+        }
+        .story-window {
+            min-height: 260px;
+            background: #020405;
+            border-radius: 24px;
             padding: 28px 24px;
-            min-height: 280px;
-            color: #efe3cc;
-            font-size: 1.25rem;
+            color: #c6d9e8;
+            font-size: 1.24rem;
             line-height: 1.6;
-            box-shadow: inset 0 0 30px #0a0806;
-            text-shadow: 0 1px 2px black;
+            text-shadow: 0 0 5px #6fa8dc70, 0 2px 3px black;
+            letter-spacing: 0.2px;
             white-space: pre-wrap;
-            margin-bottom: 28px;
-            background-image: radial-gradient(circle at 30% 40%, #3f3328 2px, transparent 2px), 
-                              radial-gradient(circle at 70% 80%, #3f3328 1px, transparent 2px);
-            background-size: 40px 40px;
+            border-left: 3px solid #2d6380;
+            border-bottom: 2px solid #1d445a;
+            transition: all 0.3s;
+            font-weight: 400;
+            box-shadow: inset 0 0 30px #07161f;
         }
-        .choices-area {
+        .story-window.pressure {
+            box-shadow: inset 0 0 40px #420d0d;
+            border-left-color: #8b4f4f;
+            color: #d4c0c0;
+            transition: 1s;
+        }
+        .choices-container {
             display: flex;
             flex-direction: column;
             gap: 14px;
-            margin-top: 20px;
+            margin: 28px 0 20px;
         }
         .choice-btn {
-            background: #2b3a40;
-            border: 2px solid #b7a17e;
-            color: #f7eedb;
-            font-size: 1.2rem;
+            background: transparent;
+            border: 2px solid #395e74;
+            color: #bdd4e0;
             padding: 16px 22px;
-            border-radius: 60px;
-            cursor: pointer;
+            font-size: 1.2rem;
+            border-radius: 50px;
             text-align: left;
+            cursor: pointer;
+            font-family: inherit;
             font-weight: 500;
-            letter-spacing: 0.4px;
-            box-shadow: 0 6px 0 #142126, 0 8px 10px black;
-            transition: all 0.07s;
             backdrop-filter: blur(2px);
+            transition: all 0.2s;
+            box-shadow: 0 4px 0 #142d38, 0 5px 15px black;
+            letter-spacing: 0.4px;
         }
         .choice-btn:hover {
-            background: #3f535c;
-            border-color: #e4ccaa;
+            border-color: #7ba6c2;
+            color: #edf5fc;
+            background: #0f2e3d50;
             transform: translateY(-2px);
-            box-shadow: 0 8px 0 #142126, 0 12px 18px black;
+            box-shadow: 0 6px 0 #1d3845, 0 8px 20px black;
         }
         .choice-btn:active {
             transform: translateY(4px);
-            box-shadow: 0 2px 0 #142126, 0 5px 10px black;
+            box-shadow: 0 2px 0 #1d3845, 0 5px 12px black;
         }
-        .utility-bar {
+        .bottom-panel {
             display: flex;
-            justify-content: flex-end;
-            margin-top: 28px;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 16px;
         }
-        .restart-btn {
-            background: none;
-            border: 2px solid #6f5e49;
-            color: #c9b696;
-            font-size: 1rem;
-            padding: 8px 22px;
+        .memory-journal {
+            background: #0a151f;
             border-radius: 40px;
-            cursor: pointer;
-            font-family: inherit;
-            transition: 0.2s;
+            padding: 14px 22px;
+            color: #aac7db;
+            font-size: 1.0rem;
+            border: 1px solid #316280;
+            min-height: 60px;
+            flex: 2;
+            min-width: 240px;
+            box-shadow: inset 0 0 15px black;
+            font-style: italic;
+            border-left: 6px solid #5c3d2e;
+            word-break: break-word;
+        }
+        .pressure-tag {
+            background: #180f0f;
+            border-radius: 40px;
+            padding: 10px 25px;
+            color: #9fbbd0;
+            border: 1px solid #4f5f6b;
+            font-size: 1.0rem;
+            text-align: center;
+            box-shadow: inset 0 0 8px black;
             letter-spacing: 1px;
         }
-        .restart-btn:hover {
-            background: #3f3227;
-            color: #f3dfc4;
-            border-color: #b59f7b;
+        .restart-btn {
+            background: black;
+            border: 1px solid #2e5b70;
+            color: #779bb3;
+            padding: 10px 26px;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: 0.2s;
+            font-family: inherit;
         }
-        .status-tag {
-            color: #bda78b;
-            font-size: 0.9rem;
-            margin-top: 10px;
-            text-align: right;
-            font-style: italic;
-            border-top: 1px dotted #6b5b47;
-            padding-top: 12px;
+        .restart-btn:hover {
+            background: #162831;
+            color: #d2e5f5;
+            border-color: #9cbdd6;
+        }
+        .typed-cursor {
+            opacity: 1;
+            animation: blink 0.9s infinite;
+            color: #80b5dc;
+        }
+        @keyframes blink {
+            0%, 100% { opacity:1; }
+            50% { opacity:0; }
         }
     </style>
 </head>
 <body>
-<div class="game-container">
-    <div class="title-panel">
-        <h1>SHADOWBROOK</h1>
-    </div>
-    <div id="storyText" class="story-pane">
-        <!-- story appears here -->
-    </div>
-    <div id="choicesContainer" class="choices-area">
-        <!-- choice buttons dynamically -->
-    </div>
-    <div class="utility-bar">
-        <button id="restartBtn" class="restart-btn">⟲ restart the mystery</button>
-    </div>
-    <div id="inventoryInfo" class="status-tag">
-        <!-- clues / flags appear here -->
+<div class="game-wrapper">
+    <div class="light-panel" id="lightPanel">
+        <div id="storyDisplay" class="story-window" id="storyWindow">
+            <!-- dynamic text inserted here -->
+        </div>
+
+        <div id="choicesArea" class="choices-container"></div>
+
+        <div class="bottom-panel">
+            <div id="journalBox" class="memory-journal">❄️ she notices...</div>
+            <div id="pressureDisplay" class="pressure-tag">⏎ weight · light</div>
+            <button id="restartButton" class="restart-btn">↻ restart demo</button>
+        </div>
     </div>
 </div>
-
 <script>
     (function() {
-        // ---------- GAME STATE ----------
-        let gameState = {
-            // clues / flags (don't spoil, just tracking)
-            talkedMartha: false,
-            metGhost: false,
-            libraryClue: false,
-            sheriffTrust: false,
-            cemeteryVisited: false,
-            shadowAmulet: false,
-            diaryFound: false,
-            shadowManRevealed: false,
-            eldritchSecret: false,
-            // which scene we are on
-            currentSceneId: 'intro'
+        // --------------------------------------------------------------
+        // VERTICAL SLICE: Stillwater Scholarship (Act I opening)
+        // Living text, pressure, memory journal, 20-30 min demo
+        // --------------------------------------------------------------
+
+        // ----- GAME STATE (minimal, only for this slice) -----
+        let state = {
+            // personality axes (hidden)
+            reserved: 2,           // 1-5 : 1=confrontational,5=reserved
+            invested: 2,           // 1-5 : emotional investment
+            trusting: 3,           // 1-5 : trusting ↔ skeptical
+            // pressure (0-10) affects text & light
+            pressure: 2,
+            // memory fragments (journal)
+            memory: [
+                "the scholarship name is everywhere. Stillwater. like the town is holding still for someone.",
+                "the woman at the bus station smiled too long."
+            ],
+            // relationships (simple)
+            marleneImpression: 0,    // -2 to +2
+            // flags
+            metLandlord: false,
+            walkedAlone: false,
+            heardWhisper: false,
+            // scene control
+            currentScene: 'busArrival',
+            // for living text engine
+            textQueue: [],
+            isPrinting: false,
+            skipRequest: false,
+            charIndex: 0,
+            currentFullText: '',
+            afterPrintCallback: null,
+            speakerRate: 1.0,   // modifier for pauses
         };
 
-        // ---------- SCENE DEFINITIONS (branching narrative, no spoilers upfront) ----------
-        const scenes = {
-            // --- INTRO / START ---
-            intro: {
-                desc: `October mist clings to the pines as you cross the town line. SHADOWBROOK — population 892 — welcomes you with flickering streetlamps. You're here to investigate the strange death of historian Elias Thorne. Sheriff Hayes ruled it an accident, but something gnaws at you.\n\nThe innkeeper at the WHISPERING PINES INN, Martha, wipes a glass as you enter. "You must be the journalist. Room 7, last one at the end. Elias used to stay there, you know... before." She stares into the distance.`,
-                choices: [
-                    { text: "👉 Press Martha for more about Elias", nextScene: 'marthaTalk' },
-                    { text: "🛌 Go to your room, rest and think", nextScene: 'roomFirstNight' },
-                    { text: "🚶 Take a walk through the foggy town", nextScene: 'townWalk' }
-                ]
-            },
-            marthaTalk: {
-                desc: `Martha sighs, wringing a rag. "Elias was here almost every night, researching old deeds and town records. Lately he seemed haunted — muttered about a 'shadow man' watching him from the woods. I thought it was just his imagination... then the stairs broke. Or so they say." She leans closer: "His room is still locked. Sheriff took the key, but I got a spare. You didn't hear it from me."`,
-                choices: [
-                    { text: "🗝️ Ask for the spare key to Elias's room", nextScene: 'getKey', action: ()=> { gameState.talkedMartha = true; } },
-                    { text: "🌲 Go for that walk first", nextScene: 'townWalk' },
-                    { text: "🛌 Rest for now", nextScene: 'roomFirstNight' }
-                ]
-            },
-            getKey: {
-                desc: `Martha slides a rusty key across the counter. "Don't tell anyone. Room 7... but be careful. Strange sounds come from there at night." You pocket the key.`,
-                choices: [
-                    { text: "🔑 Go directly to Elias's room", nextScene: 'eliasRoom' },
-                    { text: "🏨 Go outside, maybe later", nextScene: 'townWalk' }
-                ]
-            },
-            roomFirstNight: {
-                desc: `You lie down but sleep doesn't come. At 2:13 AM, floorboards creak in the hallway — soft, deliberate. Through the door crack you see a flicker of lantern light, then nothing. In the morning, a small envelope slides under your door: a torn page from Elias's diary: "the shadow knows the old way... beneath the chapel..."`,
-                choices: [
-                    { text: "🔍 Investigate the old chapel (north of town)", nextScene: 'oldChapel' },
-                    { text: "📚 Visit the town library first", nextScene: 'library' },
-                    { text: "🏛️ Talk to Sheriff Hayes", nextScene: 'sheriffOffice' }
-                ]
-            },
-            townWalk: {
-                desc: `Fog swirls along Main Street. You pass the darkened library, the sheriff's office (light on), and the old cemetery where willows weep. A hunched figure lingers by the gate — then vanishes behind a tombstone. Did you imagine it?`,
-                choices: [
-                    { text: "⚰️ Enter the cemetery", nextScene: 'cemeteryEncounter' },
-                    { text: "📖 Try the library", nextScene: 'library' },
-                    { text: "🏛️ Sheriff's office", nextScene: 'sheriffOffice' }
-                ]
-            },
-            cemeteryEncounter: {
-                desc: `Gravestones lean like tired sentinels. You find fresh flowers on Elias Thorne's grave — and a whisper behind you: "He shouldn't have dug up the past." You spin around. A translucent figure in old-fashioned clothes points toward the woods and fades. A cold spot lingers. On the grave, a small amulet with a swirling stone lies half-hidden.`,
-                choices: [
-                    { text: "🪬 Take the strange amulet", nextScene: 'takeAmulet', action: ()=> { gameState.shadowAmulet = true; gameState.cemeteryVisited = true; } },
-                    { text: "🏃 Leave it and run to the library", nextScene: 'library' }
-                ]
-            },
-            takeAmulet: {
-                desc: `The amulet hums faintly in your palm. For a moment, you see a shadow flit between the trees — taller than a man, darker than night. It's gone. You feel watched.`,
-                choices: [
-                    { text: "📚 Go to the library now", nextScene: 'library' },
-                    { text: "🏛️ Show it to the sheriff", nextScene: 'sheriffOffice' }
-                ]
-            },
-            library: {
-                desc: `The Shadowbrook library smells of dust and old leather. The librarian, Ms. Crain, peers at you over half-moon glasses. "Elias spent hours in the archives. He was obsessed with the town's founding family — the Varnes. They vanished in 1889 after a fire. He believed they didn't die... they went underground." She hands you a crumbling map: "Found this in his usual spot." The map marks a hidden root cellar near the old chapel.`,
-                choices: [
-                    { text: "🗺️ Head to the root cellar", nextScene: 'cellar', action: ()=> { gameState.libraryClue = true; } },
-                    { text: "🏛️ Tell the sheriff about this", nextScene: 'sheriffOffice' },
-                    { text: "🔑 Return to the inn / Elias's room", nextScene: 'eliasRoom' }
-                ]
-            },
-            sheriffOffice: {
-                desc: `Sheriff Hayes is a solid man with tired eyes. "Elias? Tragic accident. Case closed." He seems eager to change the subject. If you mention the shadow man or the Varnes, his jaw tightens. "Old wives' tales. Leave it alone." You notice a Varnes family Bible on his shelf, hidden behind a stack of files.`,
-                choices: [
-                    { text: "🤝 Act friendly, ask about the Bible", nextScene: 'sheriffBible', action: ()=> { gameState.sheriffTrust = true; } },
-                    { text: "😠 Press him — you don't buy the accident", nextScene: 'sheriffConfront' }
-                ]
-            },
-            sheriffBible: {
-                desc: `Hayes reluctantly hands you the Bible. "Found it in Elias's room. He wanted me to keep it safe." Inside, a page is marked: "Varnes line ended? or hiding beneath?" Handwritten notes mention a "shadow covenant" and a ritual every 50 years. The next is tomorrow — Halloween.`,
-                choices: [
-                    { text: "🔮 Investigate the ritual site (old chapel)", nextScene: 'oldChapel' },
-                    { text: "📜 Go to Elias's room again", nextScene: 'eliasRoom' }
-                ]
-            },
-            sheriffConfront: {
-                desc: `Hayes's face darkens. "I warned you." He ushers you out. But as you leave, he mutters: "The shadow takes those who dig too deep. Forget it, if you value your soul."`,
-                choices: [
-                    { text: "😨 Return to the inn, shaken", nextScene: 'roomLater' },
-                    { text: "🌲 Ignore him — go to the woods", nextScene: 'cellar' }
-                ]
-            },
-            eliasRoom: {
-                desc: `You unlock Room 7. It's tidy except for a scattered notebook. Sketches of occult symbols, a family tree ending in fire. One page reads: "The shadow man is real — not a ghost, but a guardian. It guards the Varnes' secret. They found immortality beneath the chapel. Elias, you're a fool. But I must know." A loose floorboard hides a diary.`,
-                choices: [
-                    { text: "📖 Read the hidden diary", nextScene: 'diaryRevelation', action: ()=> { gameState.diaryFound = true; } },
-                    { text: "🏃 Go to the chapel now", nextScene: 'oldChapel' }
-                ]
-            },
-            diaryRevelation: {
-                desc: `Elias's diary: "Oct 28 — I found the entrance. The Varnes didn't die; they sleep. The shadow man is their sentinel. If I perform the rite at midnight on Halloween, I can wake them — or bind them forever. But the sentinel will try to stop me. I need the amulet of the first Varnes, buried in the old cemetery."`,
-                choices: [
-                    { text: "⚰️ You have the amulet? (if you took it)", nextScene: 'finalApproach', condition: () => gameState.shadowAmulet },
-                    { text: "🪦 Go find the amulet in the cemetery", nextScene: 'cemeteryEncounter' },
-                    { text: "⛪ Rush to the chapel without amulet", nextScene: 'chapelNoAmulet' }
-                ]
-            },
-            oldChapel: {
-                desc: `The chapel is a crumbling stone shell. Behind the altar, a trapdoor leads down — just as the map showed. Faint chanting echoes from below. The air is icy.`,
-                choices: [
-                    { text: "⬇️ Descend into the darkness", nextScene: 'finalApproach' },
-                    { text: "😰 Go back for backup (sheriff?)", nextScene: 'sheriffOfficeFinal' }
-                ]
-            },
-            sheriffOfficeFinal: {
-                desc: `You burst into the sheriff's office. Hayes looks up, weary. "You found something." You explain. He sighs: "My family has guarded this secret for generations. Tonight it ends. I'll come with you." He grabs a lantern and an old revolver. Together you return to the chapel.`,
-                choices: [
-                    { text: "👥 Go down together", nextScene: 'finalWithSheriff' }
-                ]
-            },
-            cellar: {
-                desc: `The root cellar behind the chapel is filled with decayed crates. But one wall is false — beyond it, a narrow tunnel descends into the earth. The amulet grows warm.`,
-                choices: [
-                    { text: "🚶 Enter the tunnel", nextScene: 'finalApproach' },
-                    { text: "🔙 Go back and get the sheriff", nextScene: 'sheriffOfficeFinal' }
-                ]
-            },
-            // --- FINAL SCENES / ENDINGS (various, no single spoiler) ---
-            chapelNoAmulet: {
-                desc: `You descend without the amulet. In the vault, seven hooded figures stand around a stone altar. The shadow man — a towering wraith — turns to you. "You are not the heir." It reaches for you. You try to run, but the tunnel shifts... You wake in your inn room, the door ajar. A note: "Leave Shadowbrook. Forever." You leave, but the mystery haunts your dreams. (END: Driven away)`,
-                choices: [ { text: "✨ Restart the mystery", nextScene: 'intro' } ]
-            },
-            finalApproach: {
-                desc: `You stand before a vast underground chamber. Seven sarcophagi line the walls — the Varnes. The shadow man looms, whispering: "Bearer of the amulet, you may either wake them or seal them. Choose." In your hand, the amulet pulses.`,
-                choices: [
-                    { text: "🔮 Wake the Varnes (unlock immortality?)", nextScene: 'endingWake' },
-                    { text: "🛡️ Use the amulet to seal them forever", nextScene: 'endingSeal' }
-                ]
-            },
-            finalWithSheriff: {
-                desc: `Hayes faces the shadow man. "I am the last Hayes, keeper of the oath. This ends." He speaks old words from the Bible. The shadow man screams and collapses into mist. The sarcophagi crack and turn to dust. Hayes turns to you: "It's done. The Varnes are no more. Shadowbrook can rest." You've solved the mystery — and ended the curse.`,
-                choices: [ { text: "🌟 Victory. Restart?", nextScene: 'intro' } ]
-            },
-            endingWake: {
-                desc: `You speak the rite. The sarcophagi lids slide open. Ancient forms stir, but they are not human — they are shadows wearing flesh. They thank you and offer you a place among them. You become the new guardian, forever bound to the underground. The town forgets you. (END: Shadow keeper)`,
-                choices: [ { text: "🔄 Restart", nextScene: 'intro' } ]
-            },
-            endingSeal: {
-                desc: `You press the amulet to the altar. A shockwave throws you back — the chamber collapses. You wake above ground at dawn. The chapel is gone, replaced by a spring. The shadow man is only a legend now. You've brought peace to Shadowbrook.`,
-                choices: [ { text: "🍂 Mystery solved. Restart?", nextScene: 'intro' } ]
-            },
-            roomLater: {
-                desc: `Back in your room, restless, you pack your things. But something slides under the door — a photograph of you, taken through the window. A message: "Last warning." You leave town at sunrise, story unfinished. (END: Driven away)`,
-                choices: [ { text: "🔄 Try again", nextScene: 'intro' } ]
-            }
-        };
+        // ----- helper: add memory line (accumulates) -----
+        function addMemory(newLine) {
+            if (state.memory.length >= 5) state.memory.shift();
+            state.memory.push(newLine);
+            updateJournal();
+        }
 
-        // Helper to apply action from choice
-        function applyAction(choice) {
-            if (choice.action) {
-                choice.action();
+        // ----- update journal display -----
+        function updateJournal() {
+            const journalDiv = document.getElementById('journalBox');
+            let latest = state.memory[state.memory.length-1] || "she waits.";
+            if (state.memory.length > 1) {
+                // show faint previous
+                const prev = state.memory[state.memory.length-2];
+                journalDiv.innerHTML = `<span style="opacity:0.5; font-size:0.9rem;">✎ </span>${latest}<br><span style="opacity:0.3; font-size:0.85rem;">⋯ ${prev}</span>`;
+            } else {
+                journalDiv.innerHTML = `✎ ${latest}`;
             }
         }
 
-        // Render current scene based on gameState.currentSceneId
-        function renderScene() {
-            const sceneId = gameState.currentSceneId;
-            const scene = scenes[sceneId];
-            if (!scene) {
-                // fallback
-                document.getElementById('storyText').innerText = "Something went wrong in the fog...";
+        // ----- update pressure UI and ambient style -----
+        function updatePressure() {
+            const pressureDiv = document.getElementById('pressureDisplay');
+            let desc = '';
+            if (state.pressure <= 2) desc = '⏎ weight · light';
+            else if (state.pressure <= 5) desc = '⏎ weight · gathering';
+            else if (state.pressure <= 8) desc = '⏎ weight · heavy';
+            else desc = '⏎ weight · suffocating';
+            pressureDiv.innerText = desc;
+
+            const storyWin = document.getElementById('storyDisplay');
+            const lightPanel = document.getElementById('lightPanel');
+            if (state.pressure >= 6) {
+                storyWin.classList.add('pressure');
+                lightPanel.style.boxShadow = '0 0 70px #6e2a2a66, inset 0 0 30px #4a1e1e';
+            } else {
+                storyWin.classList.remove('pressure');
+                lightPanel.style.boxShadow = '0 0 60px #1f4b6e33, inset 0 0 20px #0a283a';
+            }
+        }
+
+        // ----- living text printer with speed based on speaker, pressure, and interruptions -----
+        function typeText(fullText, callback, speaker='narrator') {
+            if (state.isPrinting) {
+                // if already printing, queue this text
+                state.textQueue.push({fullText, callback, speaker});
                 return;
             }
+            state.isPrinting = true;
+            state.currentFullText = fullText;
+            state.charIndex = 0;
+            const storyElem = document.getElementById('storyDisplay');
+            storyElem.innerHTML = ''; // clear
 
-            // Filter choices that have conditions
-            let availableChoices = scene.choices;
-            if (scene.choices) {
-                availableChoices = scene.choices.filter(ch => {
-                    if (ch.condition && typeof ch.condition === 'function') {
-                        return ch.condition();
+            // base speed: higher pressure = slower, plus speaker modifiers
+            let baseDelay = 20 + (state.pressure * 2.5); // 20–45 ms
+            if (speaker === 'nervous') baseDelay += 20;
+            else if (speaker === 'confident') baseDelay = Math.max(15, baseDelay-8);
+            else if (speaker === 'lying') baseDelay += 12; // too smooth? we add tiny jitter
+
+            function printStep() {
+                if (state.skipRequest) {
+                    // instantly show full text
+                    storyElem.innerHTML = fullText;
+                    state.isPrinting = false;
+                    state.skipRequest = false;
+                    if (callback) callback();
+                    // check queue
+                    if (state.textQueue.length > 0) {
+                        const next = state.textQueue.shift();
+                        typeText(next.fullText, next.callback, next.speaker);
                     }
-                    return true;
-                });
+                    return;
+                }
+
+                if (state.charIndex < fullText.length) {
+                    // occasional interruption chance? if high pressure, sometimes add pause dots
+                    let chunk = fullText[state.charIndex];
+                    // simulate nervous pauses / corrections if speaker nervous and random
+                    if (speaker === 'nervous' && Math.random() < 0.1 && state.charIndex > 0 && fullText[state.charIndex-1] !== ' ') {
+                        chunk = '.. ' + chunk;
+                    }
+                    // lying: occasionally too smooth — but we just add tiny delay.
+                    storyElem.innerHTML += chunk;
+                    state.charIndex++;
+
+                    let delay = baseDelay;
+                    // vary by punctuation
+                    if (fullText[state.charIndex-1] === '.' || fullText[state.charIndex-1] === '?' || fullText[state.charIndex-1] === '!') {
+                        delay = 350 + (state.pressure * 20);
+                    } else if (fullText[state.charIndex-1] === ',') {
+                        delay = 160 + (state.pressure * 6);
+                    } else if (fullText[state.charIndex-1] === '—') {
+                        delay = 280;
+                    }
+                    setTimeout(printStep, delay);
+                } else {
+                    state.isPrinting = false;
+                    if (callback) callback();
+                    // process next in queue
+                    if (state.textQueue.length > 0) {
+                        const next = state.textQueue.shift();
+                        typeText(next.fullText, next.callback, next.speaker);
+                    }
+                }
             }
-
-            // Display description
-            document.getElementById('storyText').innerText = scene.desc;
-
-            // Render choice buttons
-            const choicesDiv = document.getElementById('choicesContainer');
-            choicesDiv.innerHTML = '';
-            if (availableChoices.length === 0) {
-                // In case no choices, add restart option
-                const restartBtn = document.createElement('button');
-                restartBtn.className = 'choice-btn';
-                restartBtn.innerText = '🔁 Restart';
-                restartBtn.addEventListener('click', () => {
-                    resetGame();
-                });
-                choicesDiv.appendChild(restartBtn);
-            } else {
-                availableChoices.forEach((choice, index) => {
-                    const btn = document.createElement('button');
-                    btn.className = 'choice-btn';
-                    btn.innerText = choice.text;
-                    btn.addEventListener('click', () => {
-                        applyAction(choice);
-                        if (choice.nextScene) {
-                            gameState.currentSceneId = choice.nextScene;
-                            renderScene();
-                        } else {
-                            console.warn('no nextScene');
-                        }
-                    });
-                    choicesDiv.appendChild(btn);
-                });
-            }
-
-            // Update small clue panel (shows some flags but not spoilers)
-            const clueDiv = document.getElementById('inventoryInfo');
-            let clueText = '';
-            if (gameState.shadowAmulet) clueText += '🪬 amulet ';
-            if (gameState.diaryFound) clueText += '📖 diary ';
-            if (gameState.libraryClue) clueText += '🗺️ map ';
-            if (gameState.sheriffTrust) clueText += '👮 trust ';
-            if (gameState.metGhost) clueText += '👻 ghost ';
-            if (clueText === '') clueText = 'no clues yet';
-            clueDiv.innerText = '🔍 ' + clueText;
+            printStep();
         }
 
-        // Reset game to beginning with fresh state
+        // skip typing (if user clicks)
+        function skipTyping() {
+            if (state.isPrinting) {
+                state.skipRequest = true;
+            }
+        }
+
+        // ----- choices rendering -----
+        function showChoices(choicesArray) {
+            const container = document.getElementById('choicesArea');
+            container.innerHTML = '';
+            choicesArray.forEach(choice => {
+                const btn = document.createElement('button');
+                btn.className = 'choice-btn';
+                btn.innerText = choice.text;
+                btn.addEventListener('click', (e) => {
+                    // disable all to avoid double-click
+                    document.querySelectorAll('.choice-btn').forEach(b => b.disabled = true);
+                    if (choice.action) choiceAction(choice.action);
+                    if (choice.nextScene) {
+                        // small pressure bump on choice
+                        state.pressure = Math.min(10, state.pressure + (choice.pressureDelta || 0.5));
+                        updatePressure();
+                        goToScene(choice.nextScene);
+                    }
+                });
+                container.appendChild(btn);
+            });
+        }
+
+        function choiceAction(actionDef) {
+            if (!actionDef) return;
+            // actions can be functions or shorthand strings
+            if (typeof actionDef === 'function') {
+                actionDef();
+            } else if (actionDef === 'metLandlord') {
+                state.metLandlord = true;
+                addMemory("the landlord, marlene, smells like cigarettes. she says 'make yourself invisible.'");
+                state.marleneImpression -= 1; // cold
+            } else if (actionDef === 'walkAlone') {
+                state.walkedAlone = true;
+                addMemory("walking alone — storefronts like frozen faces. someone watches from a window.");
+                state.reserved = Math.min(5, state.reserved+1);
+            } else if (actionDef === 'acceptRide') {
+                addMemory("marlene drove me. didn't ask. just said 'get in.'");
+                state.marleneImpression += 1;
+            } else if (actionDef === 'overhear') {
+                state.heardWhisper = true;
+                addMemory("whisper at the gas station: 'stillwater kid. like the other one.'");
+                state.pressure = Math.min(10, state.pressure+2);
+                updatePressure();
+            } else if (actionDef === 'stayQuiet') {
+                addMemory("i stayed quiet. marlene's tv hums. the town hums back.");
+                state.reserved = Math.min(5, state.reserved+1);
+            }
+        }
+
+        // scene definitions (demo slice)
+        const scenes = {
+            busArrival: {
+                desc: "GREYHOUND STATION, 4:47 PM — \nLake-effect snow dusts the parking lot. You step off the bus with one duffel. The sign overhead: WELCOME TO STILLWATER. Beneath it, someone has scratched '…if you can.'\n\nA woman in a worn coat approaches. 'You're the scholarship kid. Marlene. I'm your landlord. Let's go.' She doesn't offer to carry anything.",
+                speaker: 'narrator',
+                choices: [
+                    { text: "🚶 thanks, but i'd rather walk. get a feel for the town.", nextScene: 'firstWalk', action: 'walkAlone', pressureDelta: 0.2 },
+                    { text: "🚗 nod and get in the car. don't want to start rude.", nextScene: 'carRide', action: 'acceptRide', pressureDelta: 0 },
+                    { text: "❓ ask about the scratched sign — 'if you can' what?", nextScene: 'askSign', pressureDelta: 0.8 }
+                ]
+            },
+            askSign: {
+                desc: "Marlene glances at the sign, then at you. 'Someone's idea of a joke.' Her jaw tightens. 'You ask a lot of questions for someone who just got here.' The air thickens. You regret it slightly.",
+                speaker: 'marlene',
+                choices: [
+                    { text: "😐 'sorry. long ride.' get in the car quietly.", nextScene: 'carRide', action: 'acceptRide', pressureDelta: -0.3 },
+                    { text: "👣 still, i'll walk. need to clear my head.", nextScene: 'firstWalk', action: 'walkAlone', pressureDelta: 0.3 }
+                ]
+            },
+            firstWalk: {
+                desc: "You walk down Main Street. Half the storefronts are empty, but the ones that remain feel frozen: a diner, a hardware store, a church with a boarded window. Through the gas station window, you hear a woman's voice: '—another Stillwater kid. like the last one.' Her friend shushes her. They see you seeing them.",
+                speaker: 'nervous',
+                choices: [
+                    { text: "👂 pause, pretend to check your phone. try to hear more.", nextScene: 'overhearMore', action: 'overhear', pressureDelta: 1.2 },
+                    { text: "🏃 keep walking. act like you didn't notice.", nextScene: 'afterWalk', action: 'stayQuiet', pressureDelta: -0.2 }
+                ]
+            },
+            overhearMore: {
+                desc: "'—she died, that's what. drowned. but they call it accident.' The second voice hisses: 'shut up, she's right there.' You feel their stares burn the back of your neck. The snow gets heavier.",
+                speaker: 'whisper',
+                choices: [
+                    { text: "😶 walk faster. apartment now.", nextScene: 'arriveHome', action: null, pressureDelta: 1.5 }
+                ]
+            },
+            afterWalk: {
+                desc: "You pass the diner. A bell rings faintly. Everything feels watched. You finally find the address — a grey house with a porch light flickering.",
+                speaker: 'narrator',
+                choices: [
+                    { text: "🚪 enter. marlene's waiting.", nextScene: 'arriveHome', action: null }
+                ]
+            },
+            carRide: {
+                desc: "Marlene's car smells of ash and pine. She drives in silence, then mutters: 'Don't go to the docks at night. Kids think it's fun. It's not.' You pass the academy—granite pillars, a sign: STILLWATER ACADEMY · EST. 1892.",
+                speaker: 'marlene',
+                choices: [
+                    { text: "🏛️ 'what's the academy like?'", nextScene: 'askAcademy', pressureDelta: 0.2 },
+                    { text: "🪶 stay silent. watch the town slide by.", nextScene: 'silentRide', action: 'stayQuiet', pressureDelta: -0.3 }
+                ]
+            },
+            askAcademy: {
+                desc: "Marlene snorts. 'It's why the town's still breathing. Donors, grants, kids with parents who pay more than our houses. You're one of them now. Sort of.' She pulls up to a narrow house. 'Room's upstairs. Don't touch the thermostat.'",
+                speaker: 'marlene',
+                choices: [
+                    { text: "📦 go inside. unpack.", nextScene: 'arriveHome', action: null }
+                ]
+            },
+            silentRide: {
+                desc: "You watch the houses shrink and age. Marlene parks. 'Here. I'll show you the room.'",
+                speaker: 'narrator',
+                choices: [ { text: "⬆️ go inside", nextScene: 'arriveHome' } ]
+            },
+            arriveHome: {
+                desc: "Your room is small, a single bed, a desk with a lamp that hums. Through the window, you see the academy's spire, and beyond it—the grey lake. A binder on the desk: 'SCHOLARSHIP HANDBOOK · STILLWATER FOUNDATION.' You open it. The first page reads: 'You have been chosen to represent the vision of the Stillwater family.' A photo of a smiling old man. Elias Stillwater. Died 1989. But his name is everywhere.",
+                speaker: 'narrator',
+                choices: [
+                    { text: "📖 read more about the foundation", nextScene: 'handbook', pressureDelta: 0.5 },
+                    { text: "🪟 just look at the lake. think.", nextScene: 'lookLake', pressureDelta: -0.2 }
+                ]
+            },
+            handbook: {
+                desc: "You flip through — history, donors, rules. A section catches your eye: 'memorial scholarships in honor of those lost.' The list includes a Catherine Few, '1988.' A sticky note, half-peeled, says: 'ask marlene about catherine.'",
+                speaker: 'narrator',
+                choices: [
+                    { text: "❓ go find Marlene. ask about Catherine.", nextScene: 'askMarleneCatherine', pressureDelta: 1.0 },
+                    { text: "📓 write it down. wait.", nextScene: 'waitDontAsk', action: ()=>addMemory("catherine few. 1988. i'll ask later.") }
+                ]
+            },
+            lookLake: {
+                desc: "The lake is steel-grey. A gull cries. You feel very far from anywhere. A thought: someone else stood at this window. Before.",
+                speaker: 'narrator',
+                choices: [ { text: "🌙 rest. tomorrow is orientation.", nextScene: 'endDemo' } ]
+            },
+            askMarleneCatherine: {
+                desc: "Marlene is in the kitchen, smoking by the window. You ask about Catherine Few. She freezes. 'How do you know that name?' You mention the sticky note. She stubs the cigarette. 'She was a scholarship kid. Like you. Drowned. 1988. They said she couldn't swim. But she could. I taught her myself.' Her voice cracks. 'Don't end up like her.'",
+                speaker: 'marlene',
+                choices: [ { text: "… i won't. (end of demo preview)", nextScene: 'endDemo' } ]
+            },
+            waitDontAsk: {
+                desc: "You put the handbook down. The room darkens. Somewhere a dog barks once. This town holds its breath.",
+                speaker: 'narrator',
+                choices: [ { text: "🌌 end demo — to be continued", nextScene: 'endDemo' } ]
+            },
+            endDemo: {
+                desc: "❄️ END OF VERTICAL SLICE — STILLWATER SCHOLARSHI P❄️\n\nYou've felt the weight. The town holds more. (restart to replay)",
+                speaker: 'narrator',
+                choices: [ ]
+            }
+        };
+
+        function goToScene(sceneId) {
+            const scene = scenes[sceneId];
+            if (!scene) return;
+            // update scene
+            state.currentScene = sceneId;
+            const speaker = scene.speaker || 'narrator';
+            // clear choices while typing
+            document.getElementById('choicesArea').innerHTML = '';
+            typeText(scene.desc, () => {
+                if (scene.choices && scene.choices.length > 0) {
+                    showChoices(scene.choices);
+                } else {
+                    // if no choices, maybe add restart
+                    if (sceneId === 'endDemo') {
+                        const container = document.getElementById('choicesArea');
+                        const restartBtn = document.createElement('button');
+                        restartBtn.className = 'choice-btn';
+                        restartBtn.innerText = '↻ replay demo';
+                        restartBtn.addEventListener('click', () => resetGame());
+                        container.appendChild(restartBtn);
+                    }
+                }
+            }, speaker);
+        }
+
+        // skip on click story
+        document.getElementById('storyDisplay').addEventListener('click', skipTyping);
+
         function resetGame() {
-            gameState = {
-                talkedMartha: false,
-                metGhost: false,
-                libraryClue: false,
-                sheriffTrust: false,
-                cemeteryVisited: false,
-                shadowAmulet: false,
-                diaryFound: false,
-                shadowManRevealed: false,
-                eldritchSecret: false,
-                currentSceneId: 'intro'
+            state = {
+                reserved: 2, invested: 2, trusting: 3,
+                pressure: 2,
+                memory: [
+                    "the scholarship name is everywhere. Stillwater. like the town is holding still for someone.",
+                    "the woman at the bus station smiled too long."
+                ],
+                marleneImpression: 0,
+                metLandlord: false,
+                walkedAlone: false,
+                heardWhisper: false,
+                currentScene: 'busArrival',
+                textQueue: [],
+                isPrinting: false,
+                skipRequest: false,
+                charIndex: 0,
+                currentFullText: '',
+                afterPrintCallback: null,
+                speakerRate: 1.0,
             };
-            renderScene();
+            updateJournal();
+            updatePressure();
+            goToScene('busArrival');
         }
 
-        // Attach restart button
-        document.getElementById('restartBtn').addEventListener('click', resetGame);
+        // init
+        updateJournal();
+        updatePressure();
+        goToScene('busArrival');
 
-        // Initial render
-        renderScene();
-
-        // (Optional) Save/Load not needed, but we ensure state is mutable.
+        // restart button
+        document.getElementById('restartButton').addEventListener('click', resetGame);
     })();
 </script>
 </body>
