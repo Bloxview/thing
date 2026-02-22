@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THE FELLOWSHIP — Issue 01</title>
+    <title>The Fellowship — A Practice in Noticing</title>
     <style>
-        /* ----- EDITORIAL DESIGN SYSTEM ----- */
+        /* ----- THE SOPHISTICATED PASTEL SYSTEM ----- */
         :root {
-            --bg: #ffffff;
-            --text: #000000;
-            --meta: #666666;
-            --accent: #ffff00; /* Subtle highlighter yellow from Ref 4 */
-            --font-main: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            --border: 1px solid #000;
+            --bg: #f4efed;        /* Dusty Rose / Muted Pink (The Paper) */
+            --highlight: #f9f3d9; /* Creamy Pastel Yellow */
+            --accent: #7d8c7c;    /* Grounded Sage Green */
+            --text: #1a1a1a;      /* Deep Ink Black */
+            --meta: #6b6b6b;      /* Muted Graphite */
+            --font-main: 'Inter', 'Helvetica Neue', Arial, sans-serif;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -21,237 +21,241 @@
             background-color: var(--bg);
             color: var(--text);
             font-family: var(--font-main);
-            padding: 20px;
-            line-height: 1.4;
-            -webkit-font-smoothing: grayscale;
+            padding: 30px;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* ----- UTILITIES & GRID ----- */
-        .container { max-width: 1200px; margin: 0 auto; }
-        .hairline { border-top: 1px solid #000; width: 100%; margin: 20px 0; }
-        
-        /* High-scale contrast: Small meta vs Large Headings */
-        .meta-text { font-size: 10px; text-transform: uppercase; font-weight: 700; letter-spacing: 0.1em; color: var(--meta); }
+        .container { max-width: 1100px; margin: 0 auto; }
 
-        /* ----- SECTION: FOLIO (TOP BAR) ----- */
-        .folio {
+        /* ----- TOP NAV: THE STUDIO HEADER ----- */
+        nav.studio-header {
             display: flex;
             justify-content: space-between;
-            align-items: flex-end;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #000;
-            margin-bottom: 60px;
+            align-items: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            margin-bottom: 80px;
         }
 
-        .site-title { font-size: 2.5rem; font-weight: 900; letter-spacing: -0.05em; text-transform: uppercase; line-height: 0.8; }
-
-        /* ----- SECTION: HERO (ABOVE THE FOLD) ----- */
-        .hero { margin-bottom: 100px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-        
-        .hero-h1 { 
-            grid-column: 1 / 3;
-            font-size: 6rem; /* Massive 90s scale */
-            font-weight: 900; 
-            line-height: 0.9; 
+        .site-title { 
+            font-size: 1.8rem; 
+            font-weight: 800; 
             letter-spacing: -0.04em; 
+            text-transform: uppercase; 
+        }
+
+        .status-tag {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 700;
+            color: var(--meta);
+            background: var(--highlight);
+            padding: 4px 8px;
+            border-radius: 2px;
+        }
+
+        /* ----- HERO: THE HONEST START ----- */
+        .hero { 
+            margin-bottom: 120px; 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 60px; 
+        }
+
+        h1 { 
+            grid-column: 1 / 3;
+            font-size: 5.5rem; 
+            font-weight: 800; 
+            line-height: 0.95; 
+            letter-spacing: -0.05em; 
             text-transform: uppercase;
             margin-bottom: 40px;
         }
 
-        .tagline { font-size: 1.2rem; font-weight: 500; max-width: 400px; margin-bottom: 20px; }
-        .subtext { font-size: 0.9rem; color: var(--meta); max-important: 300px; }
+        .hero-left p { font-size: 1.4rem; font-weight: 500; margin-bottom: 30px; }
+        .hero-right { align-self: end; font-size: 0.95rem; color: var(--meta); max-width: 350px; }
 
-        .btn-read {
+        .btn-cta {
             display: inline-block;
-            margin-top: 30px;
-            padding: 15px 30px;
-            background: #000;
+            padding: 18px 35px;
+            background: var(--text);
             color: #fff;
             text-decoration: none;
-            font-weight: 900;
+            font-weight: 700;
             text-transform: uppercase;
-            font-size: 12px;
-            transition: 0.2s;
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            transition: transform 0.2s ease;
         }
-        .btn-read:hover { background: var(--accent); color: #000; }
+        .btn-cta:hover { transform: translateY(-2px); background: var(--accent); }
 
-        /* ----- SECTION: WHO WE ARE (MAGNOLIA) ----- */
-        .about { 
-            display: grid; 
-            grid-template-columns: 150px 1fr 1fr; /* Asymmetrical layout */
-            gap: 40px;
-            margin-bottom: 120px;
-        }
-
-        .big-hello { font-size: 5rem; font-weight: 900; line-height: 0.8; grid-column: 2 / 4; margin-bottom: 20px; }
-        .about-content { grid-column: 2; column-count: 1; text-align: justify; hyphens: auto; } /* Justified text */
-        .about-sidebar { grid-column: 3; font-size: 0.85rem; padding-left: 40px; border-left: 1px solid #eee; }
-
-        /* ----- SECTION: WHAT WE OFFER (BENTO BOX) ----- */
-        .bento-grid {
+        /* ----- ABOUT: MAGNOLIA & THE COLLECTIVE ----- */
+        .about-section {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* 3-column editorial style */
-            gap: 1px;
-            background: #000; /* Creates 1px black borders between boxes */
-            border: 1px solid #000;
-            margin-bottom: 120px;
+            grid-template-columns: 1fr 2fr;
+            gap: 80px;
+            margin-bottom: 150px;
+            padding-top: 60px;
+            border-top: 1px solid rgba(0,0,0,0.1);
         }
 
-        .bento-box { background: #fff; padding: 40px; }
-        .bento-box h3 { font-size: 1.2rem; font-weight: 900; text-transform: uppercase; margin-bottom: 15px; }
-        .bento-box p { font-size: 0.9rem; line-height: 1.5; margin-bottom: 10px; }
-        .bento-box .time { font-weight: 900; font-size: 10px; text-transform: uppercase; display: block; margin-top: 20px; }
+        .label { font-size: 11px; text-transform: uppercase; font-weight: 800; letter-spacing: 0.1em; color: var(--accent); }
+        
+        .about-body h2 { font-size: 3rem; font-weight: 800; line-height: 1; margin-bottom: 30px; }
+        .about-body p { margin-bottom: 20px; font-size: 1.1rem; column-count: 1; }
 
-        /* ----- SECTION: RECENT PIECES ----- */
-        .recent { margin-bottom: 120px; }
-        .recent-item {
+        /* ----- THE BENTO BOX: SOFTENED ----- */
+        .practice-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            padding: 30px 0;
-            border-bottom: 1px solid #000;
-            align-items: baseline;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 150px;
         }
-        .recent-item h4 { font-size: 1.5rem; font-weight: 900; text-transform: uppercase; letter-spacing: -0.02em; }
-        .recent-item .hook { font-size: 0.9rem; padding-left: 20px; }
-        .recent-item .link { text-align: right; font-weight: 900; text-decoration: none; color: #000; font-size: 0.8rem; }
 
-        /* ----- SECTION: NO ADS ----- */
-        .manifesto {
-            background: #000;
+        .practice-card {
+            padding: 40px;
+            border: 1px solid rgba(0,0,0,0.05);
+            background: rgba(255,255,255,0.3);
+            transition: background 0.3s ease;
+        }
+        .practice-card:nth-child(2) { background: var(--highlight); }
+        .practice-card:hover { background: #fff; border-color: var(--accent); }
+        
+        .practice-card h3 { font-size: 1.1rem; text-transform: uppercase; font-weight: 800; margin-bottom: 15px; }
+        .practice-card p { font-size: 0.9rem; line-height: 1.6; color: var(--meta); }
+
+        /* ----- PIECES: THE ARCHIVE ----- */
+        .pieces-list { margin-bottom: 150px; }
+        .piece-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            padding: 40px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            text-decoration: none;
+            color: inherit;
+        }
+        .piece-row:hover h4 { color: var(--accent); }
+        .piece-row h4 { font-size: 2rem; font-weight: 800; text-transform: uppercase; letter-spacing: -0.03em; margin-bottom: 10px; transition: 0.2s; }
+        .piece-row .hook { font-size: 1rem; color: var(--meta); max-width: 500px; }
+        .piece-row .read-tag { text-align: right; font-weight: 800; text-transform: uppercase; font-size: 11px; align-self: center; }
+
+        /* ----- SUSTAINABILITY (REPLACING 'NO ADS') ----- */
+        .sustainability {
+            background: var(--accent);
             color: #fff;
-            padding: 80px 40px;
+            padding: 100px 60px;
             text-align: center;
             margin-bottom: 100px;
         }
-        .manifesto h2 { font-size: 3rem; font-weight: 900; text-transform: uppercase; margin-bottom: 20px; }
-        .manifesto p { max-width: 600px; margin: 0 auto; line-height: 1.6; opacity: 0.8; }
+        .sustainability h2 { font-size: 3rem; font-weight: 800; margin-bottom: 20px; text-transform: uppercase; }
+        .sustainability p { max-width: 700px; margin: 0 auto 30px; font-size: 1.1rem; }
 
         /* ----- FOOTER ----- */
         footer {
-            padding: 40px 0;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            padding: 60px 0;
+            border-top: 1px solid rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
             font-size: 11px;
-            text-transform: uppercase;
             font-weight: 700;
+            text-transform: uppercase;
+            color: var(--meta);
         }
-        .footer-links a, .social-links a { text-decoration: none; color: #000; margin-right: 20px; }
-        .footer-links a:hover { text-decoration: underline; }
-        .footer-copyright { grid-column: 1 / 3; margin-top: 40px; color: var(--meta); }
+        footer a { color: var(--text); text-decoration: none; margin-left: 20px; }
 
-        /* ----- RESPONSIVE ----- */
-        @media (max-width: 900px) {
-            .hero-h1 { font-size: 3rem; }
-            .hero, .about, .bento-grid, .recent-item { grid-template-columns: 1fr; }
-            .about-sidebar { padding-left: 0; border-left: none; border-top: 1px solid #eee; padding-top: 20px; }
-            .big-hello { font-size: 3rem; }
+        @media (max-width: 800px) {
+            h1 { font-size: 3rem; }
+            .hero, .about-section, .practice-grid, .piece-row { grid-template-columns: 1fr; }
+            .about-section { gap: 20px; }
+            .piece-row .read-tag { text-align: left; margin-top: 20px; }
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <nav class="folio">
-        <div>
-            <div class="meta-text">Est. 2026</div>
-            <div class="site-title">THE FELLOWSHIP</div>
-        </div>
-        <div class="meta-text" style="text-align: right;">
-            Vol. 01 / Issue 01<br>
-            NY.C / Global
-        </div>
+    <nav class="studio-header">
+        <div class="site-title">The Fellowship</div>
+        <div class="status-tag">A Practice in Progress</div>
     </nav>
 
     <header class="hero">
-        <h1 class="hero-h1">You're here because something feels off.</h1>
-        <div>
-            <p class="tagline">A magazine for people who think. And people who don't have time to think. We got you both.</p>
-            <p class="subtext">The noise. The algorithms. The Stan armies coming for anyone with a thought. We're Magnolia. And this is the Fellowship—a place for the rest of us.</p>
-            <a href="#" class="btn-read">Read the Latest</a>
+        <h1>You’re here because <br>something feels off.</h1>
+        <div class="hero-left">
+            <p>The noise. The algorithms. The social friction. I’m Magnolia, and this is a place for the rest of us.</p>
+            <a href="#" class="btn-cta">Read the Latest</a>
         </div>
-        <div class="subtext" style="align-self: flex-end;">
-            Long reads for the deep divers. Quick hits for the skimmers. <br>No ads. No agenda. Just voice.
+        <div class="hero-right">
+            A magazine for people who want to think, and those who haven't had the time. Long reads for the deep divers. Quick hits for the skimmers.
         </div>
     </header>
 
-    <div class="hairline"></div>
-
-    <section class="about">
-        <div class="meta-text">01 — The Editor</div>
-        <div class="big-hello">Who runs this anyway?</div>
-        <div class="about-content">
-            <p style="font-weight: 900; margin-bottom: 20px;">Magnolia.</p>
-            <p>That's what you can call me. Not my real name—privacy matters, and honestly, the internet doesn't need to know everything about a fifteen-year-old with opinions.</p>
-            <p>I started the Fellowship because I got tired of reading things that felt like they were written by committees and corporations. Things designed to make you click, not make you think. Things with no soul.</p>
-            <p>So I made my own thing.</p>
-        </div>
-        <div class="about-sidebar">
-            <p>The Fellowship is for thinkers. It's for skimmers. It's for anyone who's ever read something and thought "finally, someone said it."</p>
-            <p style="margin-top: 20px;">That someone is me. And now, hopefully, us.</p>
+    <section class="about-section">
+        <div class="label">The Voice</div>
+        <div class="about-body">
+            <h2>Who runs this anyway?</h2>
+            <p><strong>Magnolia.</strong> That’s the name I’m using for now. Privacy is a luxury, and honestly, the internet doesn't need to know everything about a fifteen-year-old with opinions.</p>
+            <p>I started The Fellowship because I was tired of committee-written corporate noise designed for clicks rather than clarity. I wanted a soul in the writing again.</p>
+            <p>It began as a personal project, but the name "Fellowship" is a promise. It's an invitation to anyone who's ever read a headline and thought, "Finally, someone said it." It’s for thinkers, skimmers, and everyone in between.</p>
         </div>
     </section>
 
-    <section class="bento-grid">
-        <div class="bento-box">
-            <div class="meta-text" style="margin-bottom: 10px;">Depth</div>
-            <h3>For the Deep Divers</h3>
-            <p>Long-form essays that actually go somewhere. No fluff. No filler. Just one voice following an idea until it lands somewhere real.</p>
-            <span class="time">Takes 10 Minutes. Worth every second.</span>
+    <section class="practice-grid">
+        <div class="practice-card">
+            <div class="label" style="margin-bottom:10px;">Deep</div>
+            <h3>For Deep Divers</h3>
+            <p>Essays that follow a single thought to its conclusion. No filler. No fluff.</p>
+            <p style="margin-top:15px; font-weight:800; font-size:10px;">Approx. 10 Mins</p>
         </div>
-        <div class="bento-box">
-            <div class="meta-text" style="margin-bottom: 10px;">Speed</div>
+        <div class="practice-card">
+            <div class="label" style="margin-bottom:10px;">Fast</div>
             <h3>For the Skimmers</h3>
-            <p>Bullets. Bold lines. The parts that matter. We highlight the hits so you can get the point without the paragraph.</p>
-            <span class="time">Takes 60 Seconds. You'll sound smart later.</span>
+            <p>Bullets. Bold lines. The parts that matter so you can get the point and move on.</p>
+            <p style="margin-top:15px; font-weight:800; font-size:10px;">Approx. 60 Seconds</p>
         </div>
-        <div class="bento-box" style="background: var(--accent);">
-            <div class="meta-text" style="margin-bottom: 10px;">Voice</div>
-            <h3>For Everyone</h3>
-            <p>Sometimes you want depth. Sometimes you want speed. Sometimes you just want to know someone out there gets it.</p>
-            <span class="time">The Fellowship gets it.</span>
+        <div class="practice-card">
+            <div class="label" style="margin-bottom:10px;">True</div>
+            <h3>The Fellowship</h3>
+            <p>Sometimes you just want to know someone out there gets it. We get it.</p>
+            <p style="margin-top:15px; font-weight:800; font-size:10px;">For Everyone</p>
         </div>
     </section>
 
-    <section class="recent">
-        <div class="meta-text" style="margin-bottom: 20px;">Recent Pieces</div>
+    <section class="pieces-list">
+        <div class="label" style="margin-bottom: 20px;">The Archive</div>
         
-        <div class="recent-item">
-            <h4>Stan Culture or the death of individuality?</h4>
-            <div class="hook">On Barbs, cognitive dissonance, and why we're trading self-respect for streams.</div>
-            <a href="#" class="link">Read →</a>
-        </div>
+        <a href="#" class="piece-row">
+            <div>
+                <h4>Stan Culture or the death of individuality?</h4>
+                <div class="hook">On Barbs, cognitive dissonance, and why we’re trading self-respect for streams.</div>
+            </div>
+            <div class="read-tag">Open Piece →</div>
+        </a>
 
-        <div class="recent-item">
-            <h4>The Algorithm is not your friend.</h4>
-            <div class="hook">How to break the cycle of infinite scrolling and start noticing the world again.</div>
-            <a href="#" class="link">Read →</a>
-        </div>
-
-        <div class="recent-item">
-            <h4>Why privacy is the ultimate luxury.</h4>
-            <div class="hook">A fifteen-year-old's guide to disappearing in a world that demands you be seen.</div>
-            <a href="#" class="link">Read →</a>
-        </div>
+        <a href="#" class="piece-row">
+            <div>
+                <h4>The Algorithm is not your friend.</h4>
+                <div class="hook">How to break the cycle of infinite scrolling and start noticing the world again.</div>
+            </div>
+            <div class="read-tag">Open Piece →</div>
+        </a>
     </section>
 
-    <section class="manifesto">
-        <h2>You won't find ads here. Ever.</h2>
-        <p>Ads feed the machine. They make everything louder, dumber, and more desperate for your attention. The Fellowship runs on one thing: readers who give a damn. If you want to support, share a piece. No corporate sponsors. No algorithm-bait. Just writing.</p>
+    <section class="sustainability">
+        <h2>Reader Supported.</h2>
+        <p>Ads feed the machine. They make everything louder and dumber. The Fellowship runs on the support of people who give a damn. If you find value here, share a piece with a friend. No sponsors. No bait. Just voice.</p>
+        <div class="label" style="color: #fff; border: 1px solid #fff; padding: 10px; display: inline-block;">Keep Us Honest</div>
     </section>
 
     <footer>
-        <div class="footer-links">
-            <a href="#">Home</a>
-            <a href="#">Latest</a>
-            <a href="#">Archive</a>
-            <a href="#">About Magnolia</a>
-        </div>
-        <div class="social-links" style="text-align: right;">
+        <div>The Fellowship © 2026</div>
+        <div>
             <a href="#">TikTok</a>
             <a href="#">Instagram</a>
-        </div>
-        <div class="footer-copyright">
-            The Fellowship © 2026. No ads. No agenda. Just voice.
+            <a href="#">About</a>
+            <a href="#">Archive</a>
         </div>
     </footer>
 </div>
