@@ -3,203 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fellowship · Catalog 01</title>
-    <style>
-        /* ----- CATALOG MODERNISM RESET ----- */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        :root {
-            --bg: #f4f4f4; /* Subtle studio grey */
-            --text: #000000;
-            --font-bold: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            --font-light: 'Arial', sans-serif;
-        }
-
-        body {
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: var(--font-bold);
-            padding: 5vw;
-            display: flex;
-            justify-content: center;
-        }
-
-        .spread-container {
-            width: 100%;
-            max-width: 1200px;
-            display: grid;
-            grid-template-columns: 1.5fr 1fr; /* 60/40 Split */
-            gap: 40px;
-            background: #fff;
-            padding: 60px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        }
-
-        /* ----- LEFT COLUMN: THE 'HERO' TYPOGRAPHY ----- */
-        .hero-section {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-        }
-
-        .main-headline {
-            font-size: 8rem; /* Massive 'Hello' style */
-            font-weight: 900;
-            letter-spacing: -0.05em;
-            line-height: 0.8;
-            margin-bottom: 40px;
-        }
-
-        .sub-headline {
-            font-size: 3rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            margin-bottom: 20px;
-        }
-
-        /* ----- RIGHT COLUMN: THE INFORMATION MANIFEST ----- */
-        .info-sidebar {
-            border-left: 1px solid #eee;
-            padding-left: 40px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .meta-lead {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-
-        .meta-description {
-            font-size: 0.95rem;
-            font-family: var(--font-light);
-            line-height: 1.5;
-            color: #333;
-            margin-bottom: 40px;
-        }
-
-        .manifest-block {
-            margin-bottom: 30px;
-        }
-
-        .manifest-title {
-            font-size: 0.75rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 8px;
-        }
-
-        .manifest-item {
-            font-size: 0.85rem;
-            line-height: 1.6;
-            margin-bottom: 15px;
-            font-weight: 500;
-        }
-
-        .manifest-item strong {
-            display: block;
-            text-transform: uppercase;
-            font-size: 0.7rem;
-            color: #666;
-        }
-
-        /* ----- LOGO FOOTER ----- */
-        .brand-footer {
-            margin-top: auto;
-            padding-top: 60px;
-        }
-
-        .brand-name {
-            font-size: 2.5rem;
-            font-weight: 900;
-            letter-spacing: -0.03em;
-            text-transform: uppercase;
-        }
-
-        .brand-tag {
-            font-size: 0.7rem;
-            font-weight: bold;
-            letter-spacing: 0.2em;
-        }
-
-        /* Mobile Adjustments */
-        @media (max-width: 900px) {
-            .spread-container { grid-template-columns: 1fr; padding: 30px; }
-            .main-headline { font-size: 5rem; }
-            .info-sidebar { border-left: none; padding-left: 0; border-top: 1px solid #eee; padding-top: 30px; }
-        }
-    </style>
+    <title>Fellowship Magazine</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <header>
+        <h1>Fellowship</h1>
+        <p class="tagline">a group of learned people working as peers</p>
+    </header>
 
-<div class="spread-container">
-    <div class="hero-section">
-        <h1 class="main-headline">Issue.</h1>
-        <h2 class="sub-headline">Meet Fellowship.</h2>
-        
-        <div style="max-width: 500px;">
-            <p style="font-weight: 500; line-height: 1.4; margin-bottom: 20px;">
-                A study on Stan culture and the submission of the individual in the year 2026. 
-            </p>
-            <p style="font-size: 0.9rem; line-height: 1.6; color: #444;">
-                We explore the "Hive Mind" through the lens of modern consumption. 
-                Identity has been outsourced to the content provider. 
-                Submit or get stung.
-            </p>
-        </div>
+    <main>
+        <!-- Your intro, about, or any other content goes here -->
+        <section class="intro">
+            <p>Welcome to the first issue. We're just getting started.</p>
+        </section>
 
-        <div class="brand-footer">
-            <div class="brand-name">FELLOWSHIP®</div>
-            <div class="brand-tag">EST. 2026 / NEW YORK CITY</div>
-        </div>
-    </div>
-
-    <div class="info-sidebar">
-        <div class="meta-lead">The Data.</div>
-        <p class="meta-description">
-            The Barbs as a primary case study in cognitive dissonance. 
-            Recorded in New York City. Reading time: 08:00.
-        </p>
-
-        <div class="manifest-block">
-            <div class="manifest-title">Key Indicators</div>
-            
-            <div class="manifest-item">
-                <strong>Subject A</strong>
-                Supporting figures whose actions work against your own existence.
+        <!-- LATEST ISSUE SECTION – update this when a new issue comes out -->
+        <section class="latest-issue">
+            <h2>Latest Issue</h2>
+            <div class="issue-card">
+                <h3><a href="issues/issue-1.html">Stan Culture or Submission to the Death of Individuality?</a></h3>
+                <p class="issue-meta">Issue #1 · March 2026</p>
+                <p>An unapologetic look at what happens when belonging costs you your self.</p>
+                <a href="issues/issue-1.html" class="read-button">Read Full Issue →</a>
             </div>
+        </section>
+    </main>
 
-            <div class="manifest-item">
-                <strong>Subject B</strong>
-                Treating chart positions as a substitute for human rights.
-            </div>
-
-            <div class="manifest-item">
-                <strong>Subject C</strong>
-                The inability to hold a self outside of the things you consume.
-            </div>
-        </div>
-
-        <div class="manifest-block">
-            <div class="manifest-title">Digital Locations</div>
-            <div class="manifest-item">
-                X / Twitter: @fellowshipmag<br>
-                IG: @fellowship.digital<br>
-                TikTok: @fellowship
-            </div>
-        </div>
-
-        <div class="manifest-block">
-            <div class="manifest-title">Subscription Details</div>
-            <p class="manifest-item" style="font-size: 0.75rem; color: #666;">
-                Text FELLOWSHIP + ZIP CODE to find local distribution centers. 
-                Built with voice, not venture capital.
-            </p>
-        </div>
-    </div>
-</div>
-
+    <footer>
+        <p>© 2026 Fellowship · members of a group of learned people</p>
+    </footer>
 </body>
 </html>
