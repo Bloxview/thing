@@ -3,189 +3,202 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fellowship · Issue 01</title>
+    <title>Fellowship · Catalog 01</title>
     <style>
-        /* ----- MINIMALIST EDITORIAL RESET ----- */
+        /* ----- CATALOG MODERNISM RESET ----- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --bg: #ffffff;
-            --text: #1a1a1a;
-            --meta: #666;
-            --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            --bg: #f4f4f4; /* Subtle studio grey */
+            --text: #000000;
+            --font-bold: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            --font-light: 'Arial', sans-serif;
         }
 
         body {
             background-color: var(--bg);
             color: var(--text);
-            font-family: var(--font-main);
-            padding: 40px;
-            -webkit-font-smoothing: grayscale;
-        }
-
-        /* ----- PAGE HEADER & FOLIO ----- */
-        .folio {
+            font-family: var(--font-bold);
+            padding: 5vw;
             display: flex;
-            justify-content: space-between;
-            font-size: 11px;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #eee;
-            margin-bottom: 60px;
+            justify-content: center;
         }
 
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
+        .spread-container {
+            width: 100%;
+            max-width: 1200px;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr; /* 60/40 Split */
+            gap: 40px;
+            background: #fff;
+            padding: 60px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
 
-        /* ----- HEADLINE SECTION ----- */
-        header {
-            margin-bottom: 80px;
-            max-width: 800px;
+        /* ----- LEFT COLUMN: THE 'HERO' TYPOGRAPHY ----- */
+        .hero-section {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
         }
 
-        .category {
-            font-size: 11px;
-            text-transform: uppercase;
-            font-weight: bold;
-            margin-bottom: 20px;
-            display: block;
+        .main-headline {
+            font-size: 8rem; /* Massive 'Hello' style */
+            font-weight: 900;
+            letter-spacing: -0.05em;
+            line-height: 0.8;
+            margin-bottom: 40px;
         }
 
-        h1 {
-            font-size: 3.5rem;
-            font-weight: 600;
-            line-height: 1.05;
+        .sub-headline {
+            font-size: 3rem;
+            font-weight: 700;
             letter-spacing: -0.02em;
             margin-bottom: 20px;
         }
 
-        .intro-text {
-            font-size: 1.2rem;
-            font-weight: 500;
-            line-height: 1.4;
-            max-width: 500px;
-        }
-
-        /* ----- THE THREE-COLUMN GRID ----- */
-        .article-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 40px;
-            align-items: start;
-        }
-
-        /* Meta info often sits in the first column or at the top of text */
-        .credits {
-            font-size: 11px;
-            line-height: 1.6;
-            color: var(--meta);
-            margin-bottom: 30px;
-            text-transform: uppercase;
-        }
-
-        p {
-            font-size: 13px; /* Smaller, high-fashion body size */
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-            text-align: left;
-        }
-
-        /* For the Q&A or dialogue look found in your references */
-        .speaker {
-            font-weight: bold;
-            margin-right: 4px;
-        }
-
-        /* ----- PULL QUOTE ----- */
-        .pull-quote {
-            grid-column: 2 / 4; /* Spans across columns */
-            font-size: 2.2rem;
-            line-height: 1.1;
-            font-weight: 600;
-            margin: 60px 0;
-            padding-top: 20px;
-            border-top: 1px solid #000;
-        }
-
-        /* ----- FOOTER ----- */
-        footer {
-            margin-top: 100px;
-            font-size: 10px;
-            text-transform: uppercase;
-            color: var(--meta);
-            letter-spacing: 0.1em;
+        /* ----- RIGHT COLUMN: THE INFORMATION MANIFEST ----- */
+        .info-sidebar {
+            border-left: 1px solid #eee;
+            padding-left: 40px;
             display: flex;
-            gap: 20px;
+            flex-direction: column;
         }
 
-        @media (max-width: 800px) {
-            .article-grid { grid-template-columns: 1fr; }
-            h1 { font-size: 2.5rem; }
+        .meta-lead {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .meta-description {
+            font-size: 0.95rem;
+            font-family: var(--font-light);
+            line-height: 1.5;
+            color: #333;
+            margin-bottom: 40px;
+        }
+
+        .manifest-block {
+            margin-bottom: 30px;
+        }
+
+        .manifest-title {
+            font-size: 0.75rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 8px;
+        }
+
+        .manifest-item {
+            font-size: 0.85rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .manifest-item strong {
+            display: block;
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            color: #666;
+        }
+
+        /* ----- LOGO FOOTER ----- */
+        .brand-footer {
+            margin-top: auto;
+            padding-top: 60px;
+        }
+
+        .brand-name {
+            font-size: 2.5rem;
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            text-transform: uppercase;
+        }
+
+        .brand-tag {
+            font-size: 0.7rem;
+            font-weight: bold;
+            letter-spacing: 0.2em;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 900px) {
+            .spread-container { grid-template-columns: 1fr; padding: 30px; }
+            .main-headline { font-size: 5rem; }
+            .info-sidebar { border-left: none; padding-left: 0; border-top: 1px solid #eee; padding-top: 30px; }
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="folio">
-        <span>98</span>
-        <span>Fellowship — Issue 01</span>
-        <span>Culture / 2026</span>
+<div class="spread-container">
+    <div class="hero-section">
+        <h1 class="main-headline">Issue.</h1>
+        <h2 class="sub-headline">Meet Fellowship.</h2>
+        
+        <div style="max-width: 500px;">
+            <p style="font-weight: 500; line-height: 1.4; margin-bottom: 20px;">
+                A study on Stan culture and the submission of the individual in the year 2026. 
+            </p>
+            <p style="font-size: 0.9rem; line-height: 1.6; color: #444;">
+                We explore the "Hive Mind" through the lens of modern consumption. 
+                Identity has been outsourced to the content provider. 
+                Submit or get stung.
+            </p>
+        </div>
+
+        <div class="brand-footer">
+            <div class="brand-name">FELLOWSHIP®</div>
+            <div class="brand-tag">EST. 2026 / NEW YORK CITY</div>
+        </div>
     </div>
 
-    <header>
-        <span class="category">Perspectives</span>
-        <h1>Stan culture or submission to the death of individuality?</h1>
-        <p class="intro-text">Exploring the erosion of the self in the age of obsessive digital devotion.</p>
-    </header>
+    <div class="info-sidebar">
+        <div class="meta-lead">The Data.</div>
+        <p class="meta-description">
+            The Barbs as a primary case study in cognitive dissonance. 
+            Recorded in New York City. Reading time: 08:00.
+        </p>
 
-    <div class="article-grid">
-        <div class="column">
-            <div class="credits">
-                Words by The Fellowship<br>
-                Reading Time: 8 Minutes<br>
-                Location: New York
+        <div class="manifest-block">
+            <div class="manifest-title">Key Indicators</div>
+            
+            <div class="manifest-item">
+                <strong>Subject A</strong>
+                Supporting figures whose actions work against your own existence.
             </div>
-            <p>Let's start with the Oxford definition of the word. It defines a "stan" as "an overzealous or obsessive fan of a particular celebrity." In practice, that's bullshit. What many people pledge themselves under "Stan culture" is, from my unsympathetic perspective, groups of mindless individuals who protect their catalyzed image of whoever or whatever they call themselves stanning.</p>
-            <p>Now, I'm not saying all people that stan are parasocial freaks that treat these individuals as besties. But what I am saying is the inclusion and acceptance of these people under the same umbrella you deem yourself bleeds the same actions and intent into these spaces.</p>
+
+            <div class="manifest-item">
+                <strong>Subject B</strong>
+                Treating chart positions as a substitute for human rights.
+            </div>
+
+            <div class="manifest-item">
+                <strong>Subject C</strong>
+                The inability to hold a self outside of the things you consume.
+            </div>
         </div>
 
-        <div class="column">
-            <p><span class="speaker">The Fellowship:</span> How do you approach the Barbs as a case study? It’s a glaring example of cognitive dissonance. Nicki Minaj is married to a registered sex offender. She is a devoted MAGA supporter. She has aligned with homophobic rhetoric.</p>
-            <p>If you don't understand why it's logically broken for a demographic to ride hard for someone whose actions work against their existence—then you shouldn't be reading my writing. You should be in a room somewhere being evaluated for basic moral development.</p>
+        <div class="manifest-block">
+            <div class="manifest-title">Digital Locations</div>
+            <div class="manifest-item">
+                X / Twitter: @fellowshipmag<br>
+                IG: @fellowship.digital<br>
+                TikTok: @fellowship
+            </div>
         </div>
 
-        <div class="column">
-            <p>The Barbs protest for this woman like they personally emerged from her body. They defend the indefensible. They make excuses for the inexcusable. They treat streams and chart positions as more important than actual human rights.</p>
-            <p>At a certain point, supporting her stopped being about music and started being about ignoring my own existence as a gay Black male. And that's not something I'm willing to do for anyone's discography.</p>
-        </div>
-
-        <div class="pull-quote">
-            “The group’s values become your values, even when they contradict your own existence. That’s not community. That’s consumption.”
-        </div>
-
-        <div class="column">
-            <p>People don't join stan cultures because they're stupid or evil. They join because they're lonely. In 2026, genuine human connection is harder to come by than ever. We don't have third spaces. So we find connection the only way that's available: online.</p>
-        </div>
-
-        <div class="column">
-            <p>We’ve outsourced identity to content. And when your identity is content, you'll defend the content provider like your life depends on it—because in a way, it does. Without them, who are you?</p>
-        </div>
-
-        <div class="column">
-            <p>What if we learned how to be fans—real fans, who appreciate the art without worshiping the artist—instead of stans? Right now, we're watching an entire generation trade their humanity for streams. Their self-respect for chart positions.</p>
+        <div class="manifest-block">
+            <div class="manifest-title">Subscription Details</div>
+            <p class="manifest-item" style="font-size: 0.75rem; color: #666;">
+                Text FELLOWSHIP + ZIP CODE to find local distribution centers. 
+                Built with voice, not venture capital.
+            </p>
         </div>
     </div>
-
-    <footer>
-        <span>© 2026 Fellowship Magazine</span>
-        <span>Printed in Brooklyn</span>
-        <span>All Rights Reserved</span>
-    </footer>
 </div>
 
 </body>
