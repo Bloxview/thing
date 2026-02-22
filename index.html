@@ -3,234 +3,188 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fellowship · Issue #01</title>
+    <title>Fellowship · Issue 01</title>
     <style>
-        /* ----- SWISS / EDITORIAL RESET ----- */
+        /* ----- MINIMALIST EDITORIAL RESET ----- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --bg: #ecece7; /* Aged paper grey-white */
-            --text: #000;
-            --accent: #ffeb3b; /* Highlighter yellow from the Jacomo ad */
-            --border: #000;
-            --font-sans: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            --bg: #ffffff;
+            --text: #1a1a1a;
+            --meta: #666;
+            --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
         }
 
         body {
             background-color: var(--bg);
             color: var(--text);
-            font-family: var(--font-sans);
-            padding: 2rem;
-            line-height: 1.4;
-            -webkit-font-smoothing: antialiased;
+            font-family: var(--font-main);
+            padding: 40px;
+            -webkit-font-smoothing: grayscale;
         }
 
-        /* ----- DOT BORDER ELEMENT ----- */
-        .dot-divider {
-            border-top: 2px dotted #000;
-            height: 1px;
-            width: 100%;
-            margin: 2rem 0;
-            opacity: 0.3;
+        /* ----- PAGE HEADER & FOLIO ----- */
+        .folio {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 60px;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: 100px 1fr 300px; /* Asymmetric Grid */
-            gap: 2rem;
         }
 
-        /* ----- LEFT RAIL (METADATA) ----- */
-        .sidebar-left {
-            font-size: 12px;
-            font-weight: 900;
-            text-transform: uppercase;
-            border-right: 1px solid #000;
-            padding-right: 10px;
-        }
-
-        .page-number {
-            font-size: 4rem;
-            font-weight: 900;
-            letter-spacing: -5px;
-            line-height: 1;
-            margin-bottom: 2rem;
-        }
-
-        /* ----- MAIN CONTENT ----- */
+        /* ----- HEADLINE SECTION ----- */
         header {
-            grid-column: 2 / 4;
-            margin-bottom: 4rem;
-        }
-
-        .magazine-title {
-            font-size: 8rem;
-            font-weight: 900;
-            letter-spacing: -0.05em;
-            text-transform: lowercase;
-            line-height: 0.8;
-            margin-bottom: 1rem;
-        }
-
-        h1 {
-            font-size: 5rem;
-            font-weight: 900;
-            line-height: 0.9;
-            letter-spacing: -0.03em;
-            text-transform: uppercase;
-            margin-bottom: 2rem;
+            margin-bottom: 80px;
             max-width: 800px;
         }
 
-        .highlight {
-            background-color: var(--accent);
-            padding: 0 5px;
+        .category {
+            font-size: 11px;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin-bottom: 20px;
+            display: block;
         }
 
-        .content-layout {
-            grid-column: 2;
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 600;
+            line-height: 1.05;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+        }
+
+        .intro-text {
+            font-size: 1.2rem;
+            font-weight: 500;
+            line-height: 1.4;
+            max-width: 500px;
+        }
+
+        /* ----- THE THREE-COLUMN GRID ----- */
+        .article-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr; /* Two column editorial spread */
-            gap: 3rem;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 40px;
+            align-items: start;
         }
 
-        .dropcap {
-            float: left;
-            font-size: 5rem;
-            line-height: 1;
-            font-weight: 900;
-            margin-right: 10px;
+        /* Meta info often sits in the first column or at the top of text */
+        .credits {
+            font-size: 11px;
+            line-height: 1.6;
+            color: var(--meta);
+            margin-bottom: 30px;
+            text-transform: uppercase;
         }
 
         p {
-            font-size: 1rem;
+            font-size: 13px; /* Smaller, high-fashion body size */
+            line-height: 1.6;
             margin-bottom: 1.5rem;
-            text-align: justify;
-            hyphens: auto;
+            text-align: left;
         }
 
+        /* For the Q&A or dialogue look found in your references */
+        .speaker {
+            font-weight: bold;
+            margin-right: 4px;
+        }
+
+        /* ----- PULL QUOTE ----- */
         .pull-quote {
-            grid-column: 1 / 3;
-            font-size: 3rem;
-            font-weight: 900;
-            line-height: 1;
-            text-transform: uppercase;
-            margin: 4rem 0;
-            padding: 2rem;
-            border: 5px solid #000;
-            background: #fff;
-            transform: rotate(-1deg);
+            grid-column: 2 / 4; /* Spans across columns */
+            font-size: 2.2rem;
+            line-height: 1.1;
+            font-weight: 600;
+            margin: 60px 0;
+            padding-top: 20px;
+            border-top: 1px solid #000;
         }
 
-        h2 {
-            font-size: 1.5rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            background: #000;
-            color: #fff;
-            display: inline-block;
-            padding: 5px 10px;
-            margin-bottom: 1.5rem;
-        }
-
-        /* ----- FOOTER / LINKS ----- */
+        /* ----- FOOTER ----- */
         footer {
-            grid-column: 1 / 4;
-            margin-top: 5rem;
-            padding-top: 2rem;
-            border-top: 2px solid #000;
-            display: flex;
-            justify-content: space-between;
-            font-size: 12px;
-            font-weight: 900;
+            margin-top: 100px;
+            font-size: 10px;
             text-transform: uppercase;
+            color: var(--meta);
+            letter-spacing: 0.1em;
+            display: flex;
+            gap: 20px;
         }
 
-        .social-links a {
-            color: #000;
-            text-decoration: none;
-            margin-left: 1rem;
-            border: 1px solid #000;
-            padding: 5px 10px;
-        }
-
-        .social-links a:hover {
-            background: #000;
-            color: #fff;
-        }
-
-        /* Mobile Adjustments */
-        @media (max-width: 900px) {
-            .container { grid-template-columns: 1fr; }
-            .content-layout { grid-template-columns: 1fr; }
-            .magazine-title { font-size: 4rem; }
-            h1 { font-size: 3rem; }
-            .sidebar-left { border: none; border-bottom: 1px solid #000; }
+        @media (max-width: 800px) {
+            .article-grid { grid-template-columns: 1fr; }
+            h1 { font-size: 2.5rem; }
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <aside class="sidebar-left">
-        <div class="page-number">01</div>
-        <div>Fellowship Mag</div>
-        <div>Issue No. 1</div>
-        <div>Vol. 2026</div>
-        <div style="margin-top: 2rem;">Retrospective:</div>
-        <div>Individuality</div>
-    </aside>
+    <div class="folio">
+        <span>98</span>
+        <span>Fellowship — Issue 01</span>
+        <span>Culture / 2026</span>
+    </div>
 
     <header>
-        <div class="magazine-title">fellowship.</div>
-        <div class="dot-divider"></div>
-        <h1>Stan culture <br>or <span class="highlight">submission</span> to the death of individuality?</h1>
-        <div style="font-weight: 900; text-transform: uppercase;">By The Fellowship • 8 Min Read</div>
+        <span class="category">Perspectives</span>
+        <h1>Stan culture or submission to the death of individuality?</h1>
+        <p class="intro-text">Exploring the erosion of the self in the age of obsessive digital devotion.</p>
     </header>
 
-    <main class="content-layout">
-        <section>
-            <p><span class="dropcap">L</span>et's start with the Oxford definition of the word. It defines a "stan" as "an overzealous or obsessive fan of a particular celebrity." In practice, that's bullshit. What many people pledge themselves under "Stan culture" is, from my unsympathetic perspective, groups of mindless individuals who protect their catalyzed image of whoever or whatever they call themselves stanning.</p>
+    <div class="article-grid">
+        <div class="column">
+            <div class="credits">
+                Words by The Fellowship<br>
+                Reading Time: 8 Minutes<br>
+                Location: New York
+            </div>
+            <p>Let's start with the Oxford definition of the word. It defines a "stan" as "an overzealous or obsessive fan of a particular celebrity." In practice, that's bullshit. What many people pledge themselves under "Stan culture" is, from my unsympathetic perspective, groups of mindless individuals who protect their catalyzed image of whoever or whatever they call themselves stanning.</p>
+            <p>Now, I'm not saying all people that stan are parasocial freaks that treat these individuals as besties. But what I am saying is the inclusion and acceptance of these people under the same umbrella you deem yourself bleeds the same actions and intent into these spaces.</p>
+        </div>
 
-            <p>Now, I'm not saying all people that stan are parasocial freaks that treat these individuals as besties. But what I <em>am</em> saying is the inclusion and acceptance of these people under the same umbrella you deem yourself bleeds the same actions and intent into these spaces.</p>
-            
-            <h2>Case Study: Dissonance</h2>
-            <p>Let's talk about the most glaring example in pop culture right now: the Barbs. I'm not gonna go deep into every detail because even acknowledging this will get me slandered on X by people who've never had an original thought in their lives.</p>
-        </section>
+        <div class="column">
+            <p><span class="speaker">The Fellowship:</span> How do you approach the Barbs as a case study? It’s a glaring example of cognitive dissonance. Nicki Minaj is married to a registered sex offender. She is a devoted MAGA supporter. She has aligned with homophobic rhetoric.</p>
+            <p>If you don't understand why it's logically broken for a demographic to ride hard for someone whose actions work against their existence—then you shouldn't be reading my writing. You should be in a room somewhere being evaluated for basic moral development.</p>
+        </div>
 
-        <section>
-            <p>Nicki Minaj is married to a registered sex offender. Nicki Minaj is now a devoted MAGA supporter. Nicki Minaj has publicly aligned with homophobic rhetoric. These are facts—not opinions. If you don't understand why it's <em>logically broken</em> for a demographic to ride hard for someone whose actions work against their existence—then you shouldn't be reading my writing.</p>
-
-            <p>The Barbs <em>protest</em> for this woman like they personally emerged from her body. They treat streams and chart positions as more important than <em>actual human rights</em>.</p>
-        </section>
+        <div class="column">
+            <p>The Barbs protest for this woman like they personally emerged from her body. They defend the indefensible. They make excuses for the inexcusable. They treat streams and chart positions as more important than actual human rights.</p>
+            <p>At a certain point, supporting her stopped being about music and started being about ignoring my own existence as a gay Black male. And that's not something I'm willing to do for anyone's discography.</p>
+        </div>
 
         <div class="pull-quote">
-            “The same people who defend this will do it for way less. That’s the problem.”
+            “The group’s values become your values, even when they contradict your own existence. That’s not community. That’s consumption.”
         </div>
 
-        <section>
-            <h2>The Web</h2>
-            <p>We are raising—have raised—generations of people who don't know how to be a person outside of who they stan, what music they listen to, who they follow, what they post, what algorithm they're trapped in. We've outsourced identity to content.</p>
-        </section>
+        <div class="column">
+            <p>People don't join stan cultures because they're stupid or evil. They join because they're lonely. In 2026, genuine human connection is harder to come by than ever. We don't have third spaces. So we find connection the only way that's available: online.</p>
+        </div>
 
-        <section>
-            <p>People don't join stan cultures because they're stupid. They join because they're <em>lonely</em>. In 2026, genuine human connection is harder to come by than ever. We don't have third spaces. So we find connection the only way that's available: online, in communities built around shared consumption.</p>
-            <p style="font-weight: 900; border-top: 4px solid #000; padding-top: 10px;">
-                — THE FELLOWSHIP
-            </p>
-        </section>
-    </main>
+        <div class="column">
+            <p>We’ve outsourced identity to content. And when your identity is content, you'll defend the content provider like your life depends on it—because in a way, it does. Without them, who are you?</p>
+        </div>
+
+        <div class="column">
+            <p>What if we learned how to be fans—real fans, who appreciate the art without worshiping the artist—instead of stans? Right now, we're watching an entire generation trade their humanity for streams. Their self-respect for chart positions.</p>
+        </div>
+    </div>
 
     <footer>
-        <div>© 2026 Fellowship / Built with voice, not venture capital</div>
-        <div class="social-links">
-            <a href="#">INSTAGRAM</a>
-            <a href="#">TIKTOK</a>
-            <a href="#">X.COM</a>
-            <a href="#" style="background: #000; color: #fff;">SUBSCRIBE</a>
-        </div>
+        <span>© 2026 Fellowship Magazine</span>
+        <span>Printed in Brooklyn</span>
+        <span>All Rights Reserved</span>
     </footer>
 </div>
 
